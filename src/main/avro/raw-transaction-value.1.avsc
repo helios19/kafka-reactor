@@ -1,0 +1,31 @@
+{
+  "type": "record",
+  "name": "RawTransaction",
+  "namespace": "com.ing.kafka.avro",
+  "fields": [
+    {
+      "name": "id",
+      "type": "int"
+    },
+    {
+      "name": "journal_num",
+      "type": "string"
+    },
+    {
+      "name": "type",
+      "type": "string"
+    },
+    {
+      "name": "code",
+      "type": "string"
+    },
+    {
+      "name": "date",
+      "type": "date"
+    },
+    {
+      "name": "var_area",
+      "type": "string"
+    }
+  ]
+}
