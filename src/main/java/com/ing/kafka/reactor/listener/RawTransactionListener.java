@@ -5,16 +5,12 @@ import com.ing.kafka.reactor.service.TransactionService;
 import io.micrometer.core.annotation.Timed;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.springframework.http.codec.ServerSentEvent;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.Acknowledgment;
 import org.springframework.stereotype.Component;
-import reactor.core.publisher.EmitterProcessor;
-import reactor.core.publisher.Flux;
 import reactor.kafka.receiver.KafkaReceiver;
 
 import java.util.List;
-import java.util.UUID;
 
 
 @Slf4j
@@ -55,8 +51,9 @@ public class RawTransactionListener {
 
     @KafkaListener(topics="hellochange",groupId="example-group")
     public void receiver() {
-        kafkaReceiver.receive().bufferUntil(o -> {true})
-        .subscribe(System.out::println);
+        kafkaReceiver.receive().bufferUntil(o -> {return true;})
+        .subscribe(records ->
+                transactionService.process((List<ConsumerRecord<String, RawTransaction>>) records));
 
 
 
