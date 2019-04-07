@@ -39,9 +39,12 @@ buildscript {
 
 }
 
-group = 'kafka-reactive-sample'
+//group = 'kafka-reactive-sample'
 // Define the main class for the application
 //mainClassName = 'App'
+
+group = 'kafka-reactive-sample'
+version =  '1.0'
 
 //apply plugin: 'application'
 apply plugin: 'java'
@@ -53,11 +56,11 @@ apply plugin: 'io.spring.dependency-management'
 apply plugin: 'org.junit.platform.gradle.plugin'
 
 jar {
-    group = 'kafka-reactive-sample'
-    baseName = 'reactive-app'
+    group = 'kafka-reactive-sample2'
+    baseName = 'kafka-reactor'
     version =  '1.0'
     manifest {
-        attributes 'Main-Class': 'com.imc.rps.Application'
+        attributes 'Main-Class': 'com.ing.kafka.reactor.Application'
     }
 }
 

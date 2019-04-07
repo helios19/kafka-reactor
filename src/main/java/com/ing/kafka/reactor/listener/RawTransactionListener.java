@@ -2,11 +2,9 @@ package com.ing.kafka.reactor.listener;
 
 import com.ing.kafka.reactor.model.RawTransaction;
 import com.ing.kafka.reactor.service.TransactionService;
-import io.micrometer.core.annotation.Timed;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.kafka.support.Acknowledgment;
 import org.springframework.stereotype.Component;
 import reactor.kafka.receiver.KafkaReceiver;
 
@@ -25,37 +23,45 @@ public class RawTransactionListener {
         this.kafkaReceiver = kafkaReceiver;
     }
 
-    @KafkaListener(topics = "${topics.raw-transaction-topic}", containerFactory = "transactionListenerFactory")
-    @Timed
-    public void handleEvents(List<ConsumerRecord<String, RawTransaction>> records, Acknowledgment acknowledgment) {
-//            ConsumerRecord<String, RawTransaction> record, Acknowledgment acks) {
-//        log.info("received: key={}, value={}", record.key(), record.value());
-
-        // convert avro data to important data
-//        RawTransaction sampleData = record.value();
-//        ImportantData data = new ImportantData();
-//        data.setId(sampleData.getId());
-//        data.setName(sampleData.getName());
-//        data.setDescription("this is avro data");
-
-        transactionService.process(records);
-
-        acknowledgment.acknowledge();
-
-        log.info("message acknowledged.");
-    }
-
-
+//    @KafkaListener(topics = "${topics.raw-transaction-topic}", containerFactory = "transactionListenerFactory")
+//    @Timed
+//    public void handleEvents(List<ConsumerRecord<String, RawTransaction>> records, Acknowledgment acknowledgment) {
+////            ConsumerRecord<String, RawTransaction> record, Acknowledgment acks) {
+////        log.info("received: key={}, value={}", record.key(), record.value());
+//
+//        // convert avro data to important data
+////        RawTransaction sampleData = record.value();
+////        ImportantData data = new ImportantData();
+////        data.setId(sampleData.getId());
+////        data.setName(sampleData.getName());
+////        data.setDescription("this is avro data");
+//
+//        transactionService.process(records);
+//
+//        acknowledgment.acknowledge();
+//
+//        log.info("message acknowledged.");
+//    }
 
 
-
-    @KafkaListener(topics="hellochange",groupId="example-group")
+    @KafkaListener(topics = "${topics.raw-transaction-data}", containerFactory = "transactionListenerFactory")
     public void receiver() {
-        kafkaReceiver.receive().bufferUntil(o -> {return true;})
-        .subscribe(records ->
-                transactionService.process((List<ConsumerRecord<String, RawTransaction>>) records));
+
+        log.info("------------------");
+        log.info("in receiver method");
+        log.info("------------------");
+
+        kafkaReceiver.receive()
+                .log()
+                .bufferUntil(o -> true)
+                .subscribe(records ->
+                        transactionService.process((List<ConsumerRecord<String, RawTransaction>>) records));
 
 
+//        kafkaDataReceiver.receive()
+//                .map { it.value() }
+//        .share()
+//                .log()
 
 
 //        receiver.receive()
@@ -65,8 +71,6 @@ public class RawTransactionListener {
 //                });
 
     }
-
-
 
 
 }
@@ -91,9 +95,6 @@ public class RawTransactionListener {
 //    }
 //
 //}
-
-
-
 
 
 //    private final EmitterProcessor<ServerSentEvent<String>> emitter = EmitterProcessor.create();

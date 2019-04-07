@@ -12,19 +12,19 @@ import java.util.Map;
 
 @Configuration
 public class KafkaTopicConfig {
-    @Value(value = "${kafka.bootstrapAddress}")
+    @Value(value = "${spring.kafka.bootstrap-servers}")
     private String bootstrapAddress;
 
-    @Value(value = "${message.topic.name}")
-    private String topicName;
+//    @Value(value = "${message.topic.name}")
+//    private String topicName;
+//
+//    @Value(value = "${partitioned.topic.name}")
+//    private String partionedTopicName;
+//
+//    @Value(value = "${filtered.topic.name}")
+//    private String filteredTopicName;
 
-    @Value(value = "${partitioned.topic.name}")
-    private String partionedTopicName;
-
-    @Value(value = "${filtered.topic.name}")
-    private String filteredTopicName;
-
-    @Value(value = "${rawTransaction.topic.name}")
+    @Value(value = "${topics.raw-transaction-data}")
     private String rawTransactionTopicName;
 
     @Bean
@@ -34,20 +34,20 @@ public class KafkaTopicConfig {
         return new KafkaAdmin(configs);
     }
 
-    @Bean
-    public NewTopic topic1() {
-        return new NewTopic(topicName, 1, (short) 1);
-    }
-
-    @Bean
-    public NewTopic topic2() {
-        return new NewTopic(partionedTopicName, 6, (short) 1);
-    }
-
-    @Bean
-    public NewTopic topic3() {
-        return new NewTopic(filteredTopicName, 1, (short) 1);
-    }
+//    @Bean
+//    public NewTopic topic1() {
+//        return new NewTopic(topicName, 1, (short) 1);
+//    }
+//
+//    @Bean
+//    public NewTopic topic2() {
+//        return new NewTopic(partionedTopicName, 6, (short) 1);
+//    }
+//
+//    @Bean
+//    public NewTopic topic3() {
+//        return new NewTopic(filteredTopicName, 1, (short) 1);
+//    }
 
     @Bean
     public NewTopic topic4() {

@@ -18,7 +18,7 @@ import java.util.Map;
 @Configuration
 public class KafkaProducerConfig {
 
-    @Value(value = "${kafka.bootstrapAddress}")
+    @Value(value = "${spring.kafka.bootstrap-servers}")
     private String bootstrapAddress;
 
 
@@ -28,7 +28,6 @@ public class KafkaProducerConfig {
         this.kafkaProperties = kafkaProperties;
     }
 
-    @Bean
     public <T> ProducerFactory<String, T> producerFactory(Class<T> clazz) {
         Map<String, Object> props = kafkaProperties.buildProducerProperties();
 

@@ -34,7 +34,7 @@ public class KafkaConsumerConfig {
         this.retryTemplate = retryTemplate;
     }
 
-    @Value(value = "${kafka.bootstrapAddress}")
+    @Value(value = "${spring.kafka.bootstrap-servers}")
     private String bootstrapAddress;
 
 //    @Bean
@@ -134,6 +134,9 @@ public class KafkaConsumerConfig {
 
     @Bean
     public KafkaReceiver kafkaReceiver() {
+        log.info("------------------");
+        log.info("in kafkaReceiver method");
+        log.info("------------------");
         return KafkaReceiver.create(receiverOptions());
     }
 
