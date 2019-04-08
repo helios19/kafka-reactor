@@ -82,7 +82,14 @@ public class KafkaConsumerConfig {
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, KafkaAvroDeserializer.class);
         props.put(ConsumerConfig.GROUP_ID_CONFIG, groupId);
 
+
+//        return new DefaultKafkaConsumerFactory<>(consumerConfigs(), new StringDeserializer(),
+//                new AvroDeserializer<>(User.class));
+
         return new DefaultKafkaConsumerFactory<>(props);
+
+//        return new DefaultKafkaConsumerFactory<>(props, new StringDeserializer(),
+//                new AvroDeserializer<>(clazz));
     }
 
     @Bean("transactionListenerFactory")
@@ -127,7 +134,7 @@ public class KafkaConsumerConfig {
     @Bean
     ReceiverOptions receiverOptions() {
 
-        ReceiverOptions receiverOptions = ReceiverOptions.create(consumerProps()).subscription(Arrays.asList("raw-transaction-topic"));
+        ReceiverOptions receiverOptions = ReceiverOptions.create(consumerProps()).subscription(Arrays.asList("mysqlcdc.test.RawTransaction"));
 
         return receiverOptions;
     }

@@ -137,6 +137,7 @@ services:
     links:
       - zookeeper
       - kafka
+      - schema-registry
       - mysql
     ports:
       - '8083:8083'

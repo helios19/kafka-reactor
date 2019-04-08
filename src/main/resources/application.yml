@@ -17,4 +17,4 @@ spring:
 topics:
   example-data: example-data-topic
   retry-data: retry-topic
-  raw-transaction-data: raw-transaction-topic
+  raw-transaction-data: mysqlcdc.test.RawTransaction

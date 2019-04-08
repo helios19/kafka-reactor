@@ -11,4 +11,4 @@ ENV MYSQL_DATABASE="test"
 
 ADD setup.sql /tmp/setup.sql
 
-RUN "mysql -u root --password="root" test < /tmp/setup.sql"
+#RUN "mysql -u root --password="root" test < /tmp/setup.sql"

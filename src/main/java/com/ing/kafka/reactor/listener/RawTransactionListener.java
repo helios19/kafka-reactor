@@ -23,7 +23,7 @@ public class RawTransactionListener {
         this.kafkaReceiver = kafkaReceiver;
     }
 
-//    @KafkaListener(topics = "${topics.raw-transaction-topic}", containerFactory = "transactionListenerFactory")
+//    @KafkaListener(topics = "${topics.raw-transaction-data}", containerFactory = "transactionListenerFactory")
 //    @Timed
 //    public void handleEvents(List<ConsumerRecord<String, RawTransaction>> records, Acknowledgment acknowledgment) {
 ////            ConsumerRecord<String, RawTransaction> record, Acknowledgment acks) {
