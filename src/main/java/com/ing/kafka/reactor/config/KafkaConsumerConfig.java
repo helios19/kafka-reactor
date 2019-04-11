@@ -1,9 +1,12 @@
 package com.ing.kafka.reactor.config;
 
+import com.ing.kafka.reactor.deserializer.AvroDeserializer;
 import com.ing.kafka.reactor.model.RawTransaction;
 import io.confluent.kafka.serializers.KafkaAvroDeserializer;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.avro.specific.SpecificRecordBase;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
+import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.context.annotation.Bean;
@@ -50,20 +53,20 @@ public class KafkaConsumerConfig {
 //        factory.setConsumerFactory(consumerFactory("bar", String.class));
 //        return factory;
 //    }
-
-    @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, String> headersListenerFactory() {
-        ConcurrentKafkaListenerContainerFactory<String, String> factory = new ConcurrentKafkaListenerContainerFactory<>();
-        factory.setConsumerFactory(consumerFactory("headers", String.class));
-        return factory;
-    }
-
-    @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, String> partitionsListenerFactory() {
-        ConcurrentKafkaListenerContainerFactory<String, String> factory = new ConcurrentKafkaListenerContainerFactory<>();
-        factory.setConsumerFactory(consumerFactory("partitions", String.class));
-        return factory;
-    }
+//
+//    @Bean
+//    public ConcurrentKafkaListenerContainerFactory<String, String> headersListenerFactory() {
+//        ConcurrentKafkaListenerContainerFactory<String, String> factory = new ConcurrentKafkaListenerContainerFactory<>();
+//        factory.setConsumerFactory(consumerFactory("headers", String.class));
+//        return factory;
+//    }
+//
+//    @Bean
+//    public ConcurrentKafkaListenerContainerFactory<String, String> partitionsListenerFactory() {
+//        ConcurrentKafkaListenerContainerFactory<String, String> factory = new ConcurrentKafkaListenerContainerFactory<>();
+//        factory.setConsumerFactory(consumerFactory("partitions", String.class));
+//        return factory;
+//    }
 
 //    @Bean
 //    public ConcurrentKafkaListenerContainerFactory<String, String> filterListenerFactory() {
@@ -74,7 +77,7 @@ public class KafkaConsumerConfig {
 //        return factory;
 //    }
 
-    public <T> ConsumerFactory<String, T> consumerFactory(String groupId, Class<T> clazz) {
+    public <T extends SpecificRecordBase> ConsumerFactory<String, T> consumerFactory(String groupId, Class<T> clazz) {
         // build base consumer props from application.yml
         Map<String, Object> props = kafkaProperties.buildConsumerProperties();
 
@@ -82,14 +85,20 @@ public class KafkaConsumerConfig {
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, KafkaAvroDeserializer.class);
         props.put(ConsumerConfig.GROUP_ID_CONFIG, groupId);
 
+        System.out.println("-----------------------------");
+        System.out.println("in consumerFactory method");
+        System.out.println("props :" + props);
+        System.out.println("-----------------------------");
+
+
 
 //        return new DefaultKafkaConsumerFactory<>(consumerConfigs(), new StringDeserializer(),
 //                new AvroDeserializer<>(User.class));
 
-        return new DefaultKafkaConsumerFactory<>(props);
+//        return new DefaultKafkaConsumerFactory<>(props);
 
-//        return new DefaultKafkaConsumerFactory<>(props, new StringDeserializer(),
-//                new AvroDeserializer<>(clazz));
+        return new DefaultKafkaConsumerFactory<>(props, new StringDeserializer(),
+                new AvroDeserializer<>(clazz));
     }
 
     @Bean("transactionListenerFactory")
@@ -118,7 +127,7 @@ public class KafkaConsumerConfig {
         Map<String, Object> props = kafkaProperties.buildConsumerProperties();
         // add on props specific to the avro consumer
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, KafkaAvroDeserializer.class);
-
+        props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
 //        Map<String, Object> props = new HashMap<>();
 //        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "192.12.12.24:9092,192.14.14.28:9092");
 //        props.put(ConsumerConfig.GROUP_ID_CONFIG, "example-group");
@@ -128,6 +137,12 @@ public class KafkaConsumerConfig {
 //        props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
 //        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG,KafkaAvroDeserializer.class);
 //        props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
+
+        log.info("-----------------------------");
+        log.info("in consumerProps method");
+        log.info("props :" + props);
+        log.info("-----------------------------");
+
         return props;
     }
 

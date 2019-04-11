@@ -35,8 +35,8 @@ buildscript {
         classpath "se.transmode.gradle:gradle-docker:${gradleDockerVersion}"
         classpath 'com.moowork.gradle:gradle-node-plugin:1.1.0'
         classpath 'org.junit.platform:junit-platform-gradle-plugin:1.0.2'
+        classpath "com.commercehub.gradle.plugin:gradle-avro-plugin:0.16.0"
     }
-
 }
 
 //group = 'kafka-reactive-sample'
@@ -54,6 +54,7 @@ apply plugin: 'docker'
 apply plugin: 'com.moowork.node'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'org.junit.platform.gradle.plugin'
+apply plugin: "com.commercehub.gradle.plugin.avro"
 
 jar {
     group = 'kafka-reactive-sample2'
@@ -97,8 +98,8 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-actuator'
     compile 'org.springframework.boot:spring-boot-starter-cache'
 
-//    // Reactor
-//    compile "io.projectreactor:reactor-core:$reactorVersion"
+//    // Avro
+    compile "org.apache.avro:avro:1.8.2"
 
     //Reactive
     compile "io.projectreactor:reactor-core:$reactorVersion"
@@ -163,6 +164,13 @@ dependencies {
 //    <artifactId>kafka-avro-confluent</artifactId>
 //    <version>0.1.0</version>
 //</dependency>
+//
+//    <dependency>
+//    <groupId>org.springframework.kafka</groupId>
+//      <artifactId>spring-kafka-test</artifactId>
+//    <version>${spring-kafka.version}</version>
+//      <scope>test</scope>
+//    </dependency>
 
 
 
