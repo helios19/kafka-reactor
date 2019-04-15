@@ -16,45 +16,26 @@ package com.ing.kafka.reactor.utils;
  * limitations under the License.
  */
 
-import org.apache.avro.Schema;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.BinaryNode;
-import com.fasterxml.jackson.databind.node.BooleanNode;
-import com.fasterxml.jackson.databind.node.MissingNode;
-import com.fasterxml.jackson.databind.node.NullNode;
-import com.fasterxml.jackson.databind.node.NumericNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.fasterxml.jackson.databind.node.TextNode;
+import com.fasterxml.jackson.databind.node.*;
 import com.google.common.base.Function;
 import com.google.common.base.Joiner;
 import com.google.common.base.Preconditions;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
+import com.google.common.collect.*;
+import org.apache.avro.AvroRuntimeException;
+import org.apache.avro.Schema;
+import org.apache.avro.generic.GenericData;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import org.apache.avro.AvroRuntimeException;
-import org.apache.avro.Schema;
-import org.apache.avro.generic.GenericData;
+import java.util.*;
 
 public class JsonUtil {
 
@@ -346,11 +327,12 @@ public class JsonUtil {
                                        Schema.Field field) {
         try {
             Object value = convertToAvro(model, datum, field.schema());
-            if (value != null || SchemaUtil.nullOk(field.schema())) {
-                return value;
-            } else {
-                return model.getDefaultValue(field);
-            }
+//            if (value != null || SchemaUtil.nullOk(field.schema())) {
+//                return value;
+//            } else {
+//                return model.getDefaultValue(field);
+//            }
+            return null;
         } catch (DatasetRecordException e) {
             // add the field name to the error message
             throw new DatasetRecordException(String.format(
@@ -530,7 +512,7 @@ public class JsonUtil {
 
         Schema result = schemas.next();
         for (int i = 1; schemas.hasNext() && i < numRecords; i += 1) {
-            result = SchemaUtil.merge(result, schemas.next());
+//            result = SchemaUtil.merge(result, schemas.next());
         }
 
         return result;

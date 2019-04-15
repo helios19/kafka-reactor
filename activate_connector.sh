@@ -20,7 +20,7 @@ curl -X POST -H "Content-Type: application/json" localhost:8083/connectors -d @-
     "key.converter": "org.apache.kafka.connect.json.JsonConverter",
     "key.converter.schema.registry.url": "http://schema-registry:8081",
     "key.converter.schemas.enable": false,
-    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "value.converter": "io.confluent.connect.avro.AvroConverter",
     "value.converter.schema.registry.url": "http://schema-registry:8081",
     "value.converter.schemas.enable": false,
     "include.schema.changes": "true"

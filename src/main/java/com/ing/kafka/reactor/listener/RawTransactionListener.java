@@ -1,14 +1,13 @@
 package com.ing.kafka.reactor.listener;
 
-import com.ing.kafka.reactor.model.RawTransaction;
 import com.ing.kafka.reactor.service.TransactionService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.kafka.clients.consumer.ConsumerRecord;
+import mysqlcdc.test.RawTransaction.Envelope;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
+import reactor.core.publisher.Flux;
 import reactor.kafka.receiver.KafkaReceiver;
-
-import java.util.List;
+import reactor.kafka.receiver.ReceiverRecord;
 
 
 @Slf4j
@@ -48,14 +47,83 @@ public class RawTransactionListener {
     public void receiver() {
 
         log.info("------------------");
-        log.info("in receiver method");
+        log.info("in receiver -- method");
         log.info("------------------");
 
-        kafkaReceiver.receive()
-                .log()
-                .bufferUntil(o -> true)
-                .subscribe(records ->
-                        transactionService.process((List<ConsumerRecord<String, RawTransaction>>) records));
+
+        try {
+            Flux<ReceiverRecord<String,Envelope>> kafkaFlux = kafkaReceiver.receive();
+
+            kafkaFlux.log().toIterable().forEach(receiverRecord -> System.out.println("receiverRecord.value :" + receiverRecord.value().getAfter().getName()));
+        } catch (Exception e) {
+            log.info("===========================");
+            log.error("exception", e);
+            log.info("===========================");
+        }
+
+
+
+//        kafkaFlux
+//                .doOnSubscribe(s -> log.info("doOnSubscribe to display envelope : " + s.toString()))
+//                .doOnNext(record -> {
+//                    try {
+//
+//                        record.receiverOffset().commit()
+//                                .doOnError(e -> log.error("error", e))
+//                                .doOnSuccess(i -> transactionService.process(record.value()))
+////                                .retry(retryPredicate)
+//                                .subscribe();
+//                    } catch (Exception e) {
+//                        log.error("Unexpected exception", e);
+//                    }
+//                })
+//                .doOnError(e -> log.error("KafkaFlux exception", e));
+
+
+
+
+
+//        kafkaFlux
+////                .log()
+//                .doOnNext(r -> r.receiverOffset().acknowledge())
+//                .map(ReceiverRecord::value)
+////                .log()
+//                .doOnNext(subscription -> transactionService.process((Envelope) subscription))
+////                {
+////                    System.out.println("record : " + (Envelope) subscription);
+////                    transactionService.process((Envelope) subscription);
+////                })
+//                .doOnError(e -> System.err.println(e))
+//                .subscribe();
+
+
+
+
+
+
+
+
+//                .doOnNext(envelope -> log.info("subscription record : " + envelope.getAfter().getName()));
+
+//                .doOnSubscribe(subscription -> System.out.println("subscription record : " + ((Envelope) subscription).getAfter().getName()))
+//                .subscribe();
+//                .bufferUntil(envelope -> envelope.getBefore().getName() != null);
+
+
+//        kafkaReceiver.receive()
+//                .log()
+//                .bufferUntil(o -> {
+//                    System.out.println("Records in while buffering : " + o.toString());
+//                    return true;
+//
+//                })
+//                .map(r -> ((FluxOperator) r).toIterable())
+//                .doOnSubscribe(records ->
+//                        System.out.println("record : " + (MapSubscriber) records))
+////                        transactionService.process((List<ConsumerRecord<String, Envelope>>) records))
+//                .log()
+//                .doOnError(e -> System.err.println(e))
+//                .subscribe(System.out::println);
 
 
 //        kafkaDataReceiver.receive()

@@ -1,21 +1,35 @@
 package com.ing.kafka.reactor.service;
 
-import com.ing.kafka.reactor.model.RawTransaction;
+import lombok.extern.slf4j.Slf4j;
+import mysqlcdc.test.RawTransaction.Envelope;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Slf4j
 @Service
 public class TransactionServiceImpl implements TransactionService {
 
     @Override
-    public void process(RawTransaction rawTransaction) {
+    public void process(Envelope rawTransaction) {
+        log.info("=========================");
+        log.info("in TransactionServiceImpl.process method");
+        log.info("rawTransaction : " + rawTransaction);
+        log.info("=========================");
 
     }
 
     @Override
-    public void process(List<ConsumerRecord<String, RawTransaction>> records) {
+    public void process(List<ConsumerRecord<String, Envelope>> records) {
+
+
+        log.info("=========================");
+        log.info("in TransactionServiceImpl.process method");
+        log.info("records : " + records);
+        log.info("=========================");
+
+
 
 
         // grouping

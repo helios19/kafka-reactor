@@ -21,7 +21,7 @@
     },
     {
       "name": "date",
-      "type": "date"
+      "type": "string"
     },
     {
       "name": "var_area",

@@ -1,12 +1,9 @@
 package com.ing.kafka.reactor.utils;
 
 import avro.shaded.com.google.common.base.Objects;
-import avro.shaded.com.google.common.collect.ImmutableList;
-import avro.shaded.com.google.common.collect.Sets;
 import org.apache.avro.Schema;
 
 import java.util.Iterator;
-import java.util.Set;
 
 /**
  * Created by helios on 11/04/19.
@@ -31,7 +28,8 @@ public class SchemaUtil {
         if (merged != null) {
             return merged;
         }
-        return union(left, right);
+        return null;
+//        return union(left, right);
     }
 
     /**
@@ -81,47 +79,47 @@ public class SchemaUtil {
         }
 
         switch (left.getType()) {
-            case UNION:
-                return union(left, right);
-            case RECORD:
-                if (left.getName() == null && right.getName() == null &&
-                        fieldSimilarity(left, right) < SIMILARITY_THRESH) {
-                    return null;
-                } else if (!Objects.equal(left.getName(), right.getName())) {
-                    return null;
-                }
-
-                Schema combinedRecord = Schema.createRecord(
-                        coalesce(left.getName(), right.getName()),
-                        coalesce(left.getDoc(), right.getDoc()),
-                        coalesce(left.getNamespace(), right.getNamespace()),
-                        false
-                );
-                combinedRecord.setFields(mergeFields(left, right));
-
-                return combinedRecord;
-
-            case MAP:
-                return Schema.createMap(
-                        mergeOrUnion(left.getValueType(), right.getValueType()));
-
-            case ARRAY:
-                return Schema.createArray(
-                        mergeOrUnion(left.getElementType(), right.getElementType()));
-
-            case ENUM:
-                if (!Objects.equal(left.getName(), right.getName())) {
-                    return null;
-                }
-                Set<String> symbols = Sets.newLinkedHashSet();
-                symbols.addAll(left.getEnumSymbols());
-                symbols.addAll(right.getEnumSymbols());
-                return Schema.createEnum(
-                        left.getName(),
-                        coalesce(left.getDoc(), right.getDoc()),
-                        coalesce(left.getNamespace(), right.getNamespace()),
-                        ImmutableList.copyOf(symbols)
-                );
+//            case UNION:
+//                return union(left, right);
+//            case RECORD:
+//                if (left.getName() == null && right.getName() == null &&
+//                        fieldSimilarity(left, right) < SIMILARITY_THRESH) {
+//                    return null;
+//                } else if (!Objects.equal(left.getName(), right.getName())) {
+//                    return null;
+//                }
+//
+//                Schema combinedRecord = Schema.createRecord(
+//                        coalesce(left.getName(), right.getName()),
+//                        coalesce(left.getDoc(), right.getDoc()),
+//                        coalesce(left.getNamespace(), right.getNamespace()),
+//                        false
+//                );
+//                combinedRecord.setFields(mergeFields(left, right));
+//
+//                return combinedRecord;
+//
+//            case MAP:
+//                return Schema.createMap(
+//                        mergeOrUnion(left.getValueType(), right.getValueType()));
+//
+//            case ARRAY:
+//                return Schema.createArray(
+//                        mergeOrUnion(left.getElementType(), right.getElementType()));
+//
+//            case ENUM:
+//                if (!Objects.equal(left.getName(), right.getName())) {
+//                    return null;
+//                }
+//                Set<String> symbols = Sets.newLinkedHashSet();
+//                symbols.addAll(left.getEnumSymbols());
+//                symbols.addAll(right.getEnumSymbols());
+//                return Schema.createEnum(
+//                        left.getName(),
+//                        coalesce(left.getDoc(), right.getDoc()),
+//                        coalesce(left.getNamespace(), right.getNamespace()),
+//                        ImmutableList.copyOf(symbols)
+//                );
 
             default:
                 // all primitives are handled before the switch by the equality check.

@@ -1,8 +1,8 @@
 package com.ing.kafka.reactor.config;
 
-import com.ing.kafka.reactor.model.RawTransaction;
 import io.confluent.kafka.serializers.KafkaAvroSerializer;
 import lombok.extern.slf4j.Slf4j;
+import mysqlcdc.test.RawTransaction.Envelope;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
@@ -36,8 +36,8 @@ public class KafkaProducerConfig {
     }
 
     @Bean
-    public KafkaTemplate<String, RawTransaction> transactionKafkaTemplate() {
-        return new KafkaTemplate<>(producerFactory(RawTransaction.class));
+    public KafkaTemplate<String, Envelope> transactionKafkaTemplate() {
+        return new KafkaTemplate<>(producerFactory(Envelope.class));
     }
 
 

@@ -74,6 +74,15 @@ repositories {
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
+sourceSets.main.java.srcDir new File(buildDir, 'generated/java')
+
+//idea {
+//    module {
+//        // Marks the already(!) added srcDir as "generated"
+//        generatedSourceDirs += file('build/generated/java')
+//    }
+//}
+
 configurations {
     compile.exclude module: 'spring-boot-starter-tomcat'
     compile.exclude module : 'spring-boot-starter-logging'
@@ -104,6 +113,11 @@ dependencies {
     //Reactive
     compile "io.projectreactor:reactor-core:$reactorVersion"
     compile "io.projectreactor.kafka:reactor-kafka:$reactorKafkaVersion"
+
+    //org.apache.kafka:kafka-clients:2.0.0
+    compile "org.apache.kafka:kafka-clients:2.0.0"
+//    compile ("org.apache.kafka:kafka-streams:$kafkaVersion", optional)
+
 
     // Kafka
     compile "org.springframework.kafka:spring-kafka"
@@ -225,8 +239,35 @@ task initTest(type: NpmTask) {
 // javascript unit testing
 task testUnit(type: NpmTask) {
     args = ['run', 'test-unit']
-
 }
 
 ////include js unit tests into project build lifecycle
 //test.dependsOn testUnit
+
+
+
+
+
+task generateAvro(type: com.commercehub.gradle.plugin.avro.GenerateAvroJavaTask, dependsOn: ['makePretty']) {
+    source("src/main/avro")
+    outputDir = file("build/generated/java")
+}
+
+//task fixPluginAvro (type: Delete, dependsOn:'copyTask') {
+//    delete 'dest'
+//}
+//
+//task copyTask (type: Copy, dependsOn:'generateAvro') {
+//    from 'dest/java'
+//    into 'src/main/java'
+//}
+
+task makePretty(type: Delete) {
+//    delete 'dest'
+    delete 'build/generated/java'
+}
+
+
+project.afterEvaluate {
+    build.dependsOn generateAvro
+}

@@ -1,10 +1,10 @@
 package com.ing.kafka.reactor.config;
 
-import com.ing.kafka.reactor.deserializer.AvroDeserializer;
-import com.ing.kafka.reactor.model.RawTransaction;
 import io.confluent.kafka.serializers.KafkaAvroDeserializer;
+import io.confluent.kafka.serializers.KafkaAvroDeserializerConfig;
+import io.confluent.kafka.serializers.KafkaAvroSerializerConfig;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.avro.specific.SpecificRecordBase;
+import mysqlcdc.test.RawTransaction.Envelope;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -77,35 +77,54 @@ public class KafkaConsumerConfig {
 //        return factory;
 //    }
 
-    public <T extends SpecificRecordBase> ConsumerFactory<String, T> consumerFactory(String groupId, Class<T> clazz) {
-        // build base consumer props from application.yml
-        Map<String, Object> props = kafkaProperties.buildConsumerProperties();
-
-        // add on props specific to the avro consumer
-        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, KafkaAvroDeserializer.class);
-        props.put(ConsumerConfig.GROUP_ID_CONFIG, groupId);
-
-        System.out.println("-----------------------------");
-        System.out.println("in consumerFactory method");
-        System.out.println("props :" + props);
-        System.out.println("-----------------------------");
 
 
 
-//        return new DefaultKafkaConsumerFactory<>(consumerConfigs(), new StringDeserializer(),
-//                new AvroDeserializer<>(User.class));
 
-//        return new DefaultKafkaConsumerFactory<>(props);
+//    public <T extends SpecificRecordBase> ConsumerFactory<String, T> consumerFactory(String groupId, Class<T> clazz) {
+//        // build base consumer props from application.yml
+//        Map<String, Object> props = kafkaProperties.buildConsumerProperties();
+//
+//        // add on props specific to the avro consumer
+//        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, KafkaAvroDeserializer.class);
+//        props.put(ConsumerConfig.GROUP_ID_CONFIG, groupId);
+//
+//        System.out.println("-----------------------------");
+//        System.out.println("in consumerFactory method");
+//        System.out.println("props :" + props);
+//        System.out.println("-----------------------------");
+//
+//
+//
+////        return new DefaultKafkaConsumerFactory<>(consumerConfigs(), new StringDeserializer(),
+////                new AvroDeserializer<>(User.class));
+//
+////        return new DefaultKafkaConsumerFactory<>(props);
+//
+//        return new DefaultKafkaConsumerFactory<>(props, new StringDeserializer(),
+////                new KafkaAvroDeserializer());
+//                new AvroDeserializer<>(clazz));
+//    }
 
-        return new DefaultKafkaConsumerFactory<>(props, new StringDeserializer(),
-                new AvroDeserializer<>(clazz));
+//    @Bean
+    public ConsumerFactory<String, Envelope> kafkaConsumerFactory() {
+        Map<String, Object> consumerProperties = kafkaProperties.buildConsumerProperties();
+        consumerProperties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+        consumerProperties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, KafkaAvroDeserializer.class);
+        consumerProperties.put(KafkaAvroSerializerConfig.SCHEMA_REGISTRY_URL_CONFIG, "http://schema-registry:8081");
+        consumerProperties.put(KafkaAvroDeserializerConfig.SPECIFIC_AVRO_READER_CONFIG, true);
+
+//        // Schema Registry
+//        consumerProperties.put(SCHEMA_REGISTRY_URL_KEY, schemaRegistryUrl);
+        return new DefaultKafkaConsumerFactory<>(consumerProperties);
     }
 
     @Bean("transactionListenerFactory")
-    public ConcurrentKafkaListenerContainerFactory<String, RawTransaction> transactionListenerFactory() {
-        ConcurrentKafkaListenerContainerFactory<String, RawTransaction> factory = new ConcurrentKafkaListenerContainerFactory<>();
+    public ConcurrentKafkaListenerContainerFactory<String, Envelope> transactionListenerFactory() {
+        ConcurrentKafkaListenerContainerFactory<String, Envelope> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.getContainerProperties().setAckMode(MANUAL);
-        factory.setConsumerFactory(consumerFactory("rawTransaction-listener", RawTransaction.class));
+//        factory.setConsumerFactory(consumerFactory("rawTransaction-listener", RawTransaction.class));
+        factory.setConsumerFactory(kafkaConsumerFactory());
 
 
         factory.setRetryTemplate(retryTemplate);
@@ -116,6 +135,18 @@ public class KafkaConsumerConfig {
             return null;
         });
 
+
+        // Error handler
+//        factory.setErrorHandler(new SeekToCurrentErrorHandler());
+
+
+        // Filter
+//        ConcurrentKafkaListenerContainerFactory<String, String> factory
+//                = new ConcurrentKafkaListenerContainerFactory<>();
+//        factory.setConsumerFactory(consumerFactory());
+//        factory.setRecordFilterStrategy(
+//                record -> record.value().contains("World"));
+//        return factory;
 
         return factory;
     }
@@ -135,7 +166,7 @@ public class KafkaConsumerConfig {
 //        props.put(ConsumerConfig.AUTO_COMMIT_INTERVAL_MS_CONFIG, "100");
 //        props.put(ConsumerConfig.SESSION_TIMEOUT_MS_CONFIG, "15000");
 //        props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-//        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG,KafkaAvroDeserializer.class);
+//        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG,AvroDeserializer.class);
 //        props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
 
         log.info("-----------------------------");
@@ -177,3 +208,25 @@ public class KafkaConsumerConfig {
 //    }
 
 }
+
+
+//@Component
+//@KafkaListener(id = "multiGroup", topics = { "foos", "bars" })
+//public class MultiMethods {
+//
+//    @KafkaHandler
+//    public void foo(Foo1 foo) {
+//        System.out.println("Received: " + foo);
+//    }
+//
+//    @KafkaHandler
+//    public void bar(Bar bar) {
+//        System.out.println("Received: " + bar);
+//    }
+//
+//    @KafkaHandler(isDefault = true)
+//    public void unknown(Object object) {
+//        System.out.println("Received unknown: " + object);
+//    }
+//
+//}
