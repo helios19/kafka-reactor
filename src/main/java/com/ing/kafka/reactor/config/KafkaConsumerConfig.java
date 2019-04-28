@@ -1,8 +1,12 @@
 package com.ing.kafka.reactor.config;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.dataformat.avro.AvroMapper;
+import com.ing.kafka.reactor.converter.SimpleSchemaMessageConverter;
 import io.confluent.kafka.serializers.KafkaAvroDeserializer;
 import io.confluent.kafka.serializers.KafkaAvroDeserializerConfig;
-import io.confluent.kafka.serializers.KafkaAvroSerializerConfig;
 import lombok.extern.slf4j.Slf4j;
 import mysqlcdc.test.RawTransaction.Envelope;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
@@ -14,6 +18,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
+import org.springframework.kafka.support.converter.RecordMessageConverter;
 import org.springframework.retry.support.RetryTemplate;
 import reactor.kafka.receiver.KafkaReceiver;
 import reactor.kafka.receiver.ReceiverOptions;
@@ -111,7 +116,7 @@ public class KafkaConsumerConfig {
         Map<String, Object> consumerProperties = kafkaProperties.buildConsumerProperties();
         consumerProperties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         consumerProperties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, KafkaAvroDeserializer.class);
-        consumerProperties.put(KafkaAvroSerializerConfig.SCHEMA_REGISTRY_URL_CONFIG, "http://schema-registry:8081");
+//        consumerProperties.put(KafkaAvroSerializerConfig.SCHEMA_REGISTRY_URL_CONFIG, "http://schema-registry:8081");
         consumerProperties.put(KafkaAvroDeserializerConfig.SPECIFIC_AVRO_READER_CONFIG, true);
 
 //        // Schema Registry
@@ -126,12 +131,18 @@ public class KafkaConsumerConfig {
 //        factory.setConsumerFactory(consumerFactory("rawTransaction-listener", RawTransaction.class));
         factory.setConsumerFactory(kafkaConsumerFactory());
 
+//        factory.setMessageConverter(new StringJsonMessageConverter());
+
+//        factory.setBatchListener(true);
+//        factory.setMessageConverter(new BatchMessagingMessageConverter(converter()));
+
+        factory.setMessageConverter(converter());
 
         factory.setRetryTemplate(retryTemplate);
 
         // create simple recovery callback (this gets executed once retry policy limits have been exceeded)
         factory.setRecoveryCallback(context -> {
-            log.error("RetryPolicy limit has been exceeded!");
+            log.error("RetryPolicy limit has been exceeded!", context.getLastThrowable());
             return null;
         });
 
@@ -192,6 +203,42 @@ public class KafkaConsumerConfig {
         log.info("------------------");
         return KafkaReceiver.create(receiverOptions());
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @Bean
+    public RecordMessageConverter converter() {
+        return new SimpleSchemaMessageConverter();
+//        return new AvroSchemaMessageConverter(avroMapper(), schemaRegistry());
+    }
+
+    @Bean
+    public SchemaRegistry schemaRegistry() {
+        return new SchemaRegistry();
+    }
+
+    @Bean
+    public AvroMapper avroMapper() {
+        AvroMapper mapper = new AvroMapper();
+        mapper.configure(JsonGenerator.Feature.IGNORE_UNKNOWN, true);
+        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+        return mapper;
+    }
+
+
 
 
 //    @Bean

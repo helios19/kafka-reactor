@@ -4,7 +4,6 @@ import com.ing.kafka.reactor.service.TransactionService;
 import lombok.extern.slf4j.Slf4j;
 import mysqlcdc.test.RawTransaction.Envelope;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.Acknowledgment;
 import org.springframework.stereotype.Component;
 
@@ -16,7 +15,7 @@ public class RetryListener {
         this.transactionService = transactionService;
     }
 
-    @KafkaListener(topics = "${topics.retry-data}", containerFactory = "transactionListenerFactory")
+//    @KafkaListener(topics = "${topics.retry-data}",clientIdPrefix = "kafka-samples-client-bis", containerFactory = "transactionListenerFactory")
     public void listen(ConsumerRecord<String, Envelope> record, Acknowledgment acks) {
         log.info("received: key={}, value={}", record.key(), record.value());
         transactionService.process(record.value());

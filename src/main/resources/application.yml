@@ -1,6 +1,7 @@
 spring:
   kafka:
-    bootstrap-servers: http://kafka:29092
+#    bootstrap-servers: http://kafka:29092
+    bootstrap-servers: http://localhost:9092
     consumer:
       enable-auto-commit: false
       auto-offset-reset: earliest
@@ -9,7 +10,8 @@ spring:
 #      properties:
 #        isolation.level: read_committed
     properties: # for KafkaAvroDeserializer
-      schema.registry.url: http://schema-registry:8081
+#      schema.registry.url: http://schema-registry:8081
+      schema.registry.url: http://localhost:8081
       specific.avro.reader: true
   profiles:
     active: development

@@ -1,0 +1,601 @@
+Attaching to kafka-reactor
+[36mkafka-reactor      |[0m SLF4J: Class path contains multiple SLF4J bindings.
+[36mkafka-reactor      |[0m SLF4J: Found binding in [jar:file:/app.jar!/BOOT-INF/lib/logback-classic-1.2.3.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+[36mkafka-reactor      |[0m SLF4J: Found binding in [jar:file:/app.jar!/BOOT-INF/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+[36mkafka-reactor      |[0m SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+[36mkafka-reactor      |[0m SLF4J: Actual binding is of type [ch.qos.logback.classic.util.ContextSelectorStaticBinder]
+[36mkafka-reactor      |[0m 
+[36mkafka-reactor      |[0m   .   ____          _            __ _ _
+[36mkafka-reactor      |[0m  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+[36mkafka-reactor      |[0m ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+[36mkafka-reactor      |[0m  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+[36mkafka-reactor      |[0m   '  |____| .__|_| |_|_| |_\__, | / / / /
+[36mkafka-reactor      |[0m  =========|_|==============|___/=/_/_/_/
+[36mkafka-reactor      |[0m  :: Spring Boot ::        (v2.0.5.RELEASE)
+[36mkafka-reactor      |[0m 
+[36mkafka-reactor      |[0m 2019-04-15 13:33:42.897  INFO 1 --- [           main] com.ing.kafka.reactor.Application        : Starting Application on kafka-reactor with PID 1 (/app.jar started by root in /)
+[36mkafka-reactor      |[0m 2019-04-15 13:33:42.901  INFO 1 --- [           main] com.ing.kafka.reactor.Application        : The following profiles are active: development
+[36mkafka-reactor      |[0m 2019-04-15 13:33:42.967  INFO 1 --- [           main] onfigReactiveWebServerApplicationContext : Refreshing org.springframework.boot.web.reactive.context.AnnotationConfigReactiveWebServerApplicationContext@d70c109: startup date [Mon Apr 15 13:33:42 GMT 2019]; root of context hierarchy
+[36mkafka-reactor      |[0m 2019-04-15 13:33:44.342  INFO 1 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.kafka.annotation.KafkaBootstrapConfiguration' of type [org.springframework.kafka.annotation.KafkaBootstrapConfiguration$$EnhancerBySpringCGLIB$$be97d7c2] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[36mkafka-reactor      |[0m 2019-04-15 13:33:45.253  INFO 1 --- [           main] o.s.w.r.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.reactive.resource.ResourceWebHandler]
+[36mkafka-reactor      |[0m 2019-04-15 13:33:45.253  INFO 1 --- [           main] o.s.w.r.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.reactive.resource.ResourceWebHandler]
+[36mkafka-reactor      |[0m 2019-04-15 13:33:45.857  INFO 1 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+[36mkafka-reactor      |[0m 2019-04-15 13:33:45.883  INFO 1 --- [           main] .b.a.e.w.r.WebFluxEndpointHandlerMapping : Mapped "{[/actuator/health],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public org.reactivestreams.Publisher<org.springframework.http.ResponseEntity<java.lang.Object>> org.springframework.boot.actuate.endpoint.web.reactive.AbstractWebFluxEndpointHandlerMapping$ReadOperationHandler.handle(org.springframework.web.server.ServerWebExchange)
+[36mkafka-reactor      |[0m 2019-04-15 13:33:45.885  INFO 1 --- [           main] .b.a.e.w.r.WebFluxEndpointHandlerMapping : Mapped "{[/actuator/info],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public org.reactivestreams.Publisher<org.springframework.http.ResponseEntity<java.lang.Object>> org.springframework.boot.actuate.endpoint.web.reactive.AbstractWebFluxEndpointHandlerMapping$ReadOperationHandler.handle(org.springframework.web.server.ServerWebExchange)
+[36mkafka-reactor      |[0m 2019-04-15 13:33:45.886  INFO 1 --- [           main] .b.a.e.w.r.WebFluxEndpointHandlerMapping : Mapped "{[/actuator],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto protected java.util.Map<java.lang.String, java.util.Map<java.lang.String, org.springframework.boot.actuate.endpoint.web.Link>> org.springframework.boot.actuate.endpoint.web.reactive.WebFluxEndpointHandlerMapping.links(org.springframework.web.server.ServerWebExchange)
+[36mkafka-reactor      |[0m 2019-04-15 13:33:46.122  INFO 1 --- [           main] o.s.w.r.r.m.a.ControllerMethodResolver   : Looking for @ControllerAdvice: org.springframework.boot.web.reactive.context.AnnotationConfigReactiveWebServerApplicationContext@d70c109: startup date [Mon Apr 15 13:33:42 GMT 2019]; root of context hierarchy
+[36mkafka-reactor      |[0m 2019-04-15 13:33:46.379  INFO 1 --- [           main] c.i.k.r.config.KafkaConsumerConfig       : ------------------
+[36mkafka-reactor      |[0m 2019-04-15 13:33:46.380  INFO 1 --- [           main] c.i.k.r.config.KafkaConsumerConfig       : in kafkaReceiver method
+[36mkafka-reactor      |[0m 2019-04-15 13:33:46.380  INFO 1 --- [           main] c.i.k.r.config.KafkaConsumerConfig       : ------------------
+[36mkafka-reactor      |[0m 2019-04-15 13:33:46.381  INFO 1 --- [           main] c.i.k.r.config.KafkaConsumerConfig       : -----------------------------
+[36mkafka-reactor      |[0m 2019-04-15 13:33:46.381  INFO 1 --- [           main] c.i.k.r.config.KafkaConsumerConfig       : in consumerProps method
+[36mkafka-reactor      |[0m 2019-04-15 13:33:46.381  INFO 1 --- [           main] c.i.k.r.config.KafkaConsumerConfig       : props :{key.deserializer=class org.apache.kafka.common.serialization.StringDeserializer, schema.registry.url=http://schema-registry:8081, value.deserializer=class io.confluent.kafka.serializers.KafkaAvroDeserializer, enable.auto.commit=false, group.id=kafka-samples, bootstrap.servers=[http://kafka:29092], specific.avro.reader=true, auto.offset.reset=earliest, client.id=kafka-samples-client}
+[36mkafka-reactor      |[0m 2019-04-15 13:33:46.381  INFO 1 --- [           main] c.i.k.r.config.KafkaConsumerConfig       : -----------------------------
+[36mkafka-reactor      |[0m 2019-04-15 13:33:46.965  INFO 1 --- [           main] o.a.k.clients.admin.AdminClientConfig    : AdminClientConfig values: 
+[36mkafka-reactor      |[0m 	bootstrap.servers = [http://kafka:29092]
+[36mkafka-reactor      |[0m 	client.id = 
+[36mkafka-reactor      |[0m 	connections.max.idle.ms = 300000
+[36mkafka-reactor      |[0m 	metadata.max.age.ms = 300000
+[36mkafka-reactor      |[0m 	metric.reporters = []
+[36mkafka-reactor      |[0m 	metrics.num.samples = 2
+[36mkafka-reactor      |[0m 	metrics.recording.level = INFO
+[36mkafka-reactor      |[0m 	metrics.sample.window.ms = 30000
+[36mkafka-reactor      |[0m 	receive.buffer.bytes = 65536
+[36mkafka-reactor      |[0m 	reconnect.backoff.max.ms = 1000
+[36mkafka-reactor      |[0m 	reconnect.backoff.ms = 50
+[36mkafka-reactor      |[0m 	request.timeout.ms = 120000
+[36mkafka-reactor      |[0m 	retries = 5
+[36mkafka-reactor      |[0m 	retry.backoff.ms = 100
+[36mkafka-reactor      |[0m 	sasl.client.callback.handler.class = null
+[36mkafka-reactor      |[0m 	sasl.jaas.config = null
+[36mkafka-reactor      |[0m 	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+[36mkafka-reactor      |[0m 	sasl.kerberos.min.time.before.relogin = 60000
+[36mkafka-reactor      |[0m 	sasl.kerberos.service.name = null
+[36mkafka-reactor      |[0m 	sasl.kerberos.ticket.renew.jitter = 0.05
+[36mkafka-reactor      |[0m 	sasl.kerberos.ticket.renew.window.factor = 0.8
+[36mkafka-reactor      |[0m 	sasl.login.callback.handler.class = null
+[36mkafka-reactor      |[0m 	sasl.login.class = null
+[36mkafka-reactor      |[0m 	sasl.login.refresh.buffer.seconds = 300
+[36mkafka-reactor      |[0m 	sasl.login.refresh.min.period.seconds = 60
+[36mkafka-reactor      |[0m 	sasl.login.refresh.window.factor = 0.8
+[36mkafka-reactor      |[0m 	sasl.login.refresh.window.jitter = 0.05
+[36mkafka-reactor      |[0m 	sasl.mechanism = GSSAPI
+[36mkafka-reactor      |[0m 	security.protocol = PLAINTEXT
+[36mkafka-reactor      |[0m 	send.buffer.bytes = 131072
+[36mkafka-reactor      |[0m 	ssl.cipher.suites = null
+[36mkafka-reactor      |[0m 	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+[36mkafka-reactor      |[0m 	ssl.endpoint.identification.algorithm = https
+[36mkafka-reactor      |[0m 	ssl.key.password = null
+[36mkafka-reactor      |[0m 	ssl.keymanager.algorithm = SunX509
+[36mkafka-reactor      |[0m 	ssl.keystore.location = null
+[36mkafka-reactor      |[0m 	ssl.keystore.password = null
+[36mkafka-reactor      |[0m 	ssl.keystore.type = JKS
+[36mkafka-reactor      |[0m 	ssl.protocol = TLS
+[36mkafka-reactor      |[0m 	ssl.provider = null
+[36mkafka-reactor      |[0m 	ssl.secure.random.implementation = null
+[36mkafka-reactor      |[0m 	ssl.trustmanager.algorithm = PKIX
+[36mkafka-reactor      |[0m 	ssl.truststore.location = null
+[36mkafka-reactor      |[0m 	ssl.truststore.password = null
+[36mkafka-reactor      |[0m 	ssl.truststore.type = JKS
+[36mkafka-reactor      |[0m 
+[36mkafka-reactor      |[0m 2019-04-15 13:33:47.213  INFO 1 --- [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka version : 2.0.0
+[36mkafka-reactor      |[0m 2019-04-15 13:33:47.214  INFO 1 --- [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId : 3402a8361b734732
+[36mkafka-reactor      |[0m 2019-04-15 13:33:47.409  INFO 1 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+[36mkafka-reactor      |[0m 2019-04-15 13:33:47.420  INFO 1 --- [           main] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 2147483547
+[36mkafka-reactor      |[0m 2019-04-15 13:33:47.437  INFO 1 --- [           main] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+[36mkafka-reactor      |[0m 	auto.commit.interval.ms = 5000
+[36mkafka-reactor      |[0m 	auto.offset.reset = earliest
+[36mkafka-reactor      |[0m 	bootstrap.servers = [http://kafka:29092]
+[36mkafka-reactor      |[0m 	check.crcs = true
+[36mkafka-reactor      |[0m 	client.id = kafka-samples-client-0
+[36mkafka-reactor      |[0m 	connections.max.idle.ms = 540000
+[36mkafka-reactor      |[0m 	default.api.timeout.ms = 60000
+[36mkafka-reactor      |[0m 	enable.auto.commit = false
+[36mkafka-reactor      |[0m 	exclude.internal.topics = true
+[36mkafka-reactor      |[0m 	fetch.max.bytes = 52428800
+[36mkafka-reactor      |[0m 	fetch.max.wait.ms = 500
+[36mkafka-reactor      |[0m 	fetch.min.bytes = 1
+[36mkafka-reactor      |[0m 	group.id = kafka-samples
+[36mkafka-reactor      |[0m 	heartbeat.interval.ms = 3000
+[36mkafka-reactor      |[0m 	interceptor.classes = []
+[36mkafka-reactor      |[0m 	internal.leave.group.on.close = true
+[36mkafka-reactor      |[0m 	isolation.level = read_uncommitted
+[36mkafka-reactor      |[0m 	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+[36mkafka-reactor      |[0m 	max.partition.fetch.bytes = 1048576
+[36mkafka-reactor      |[0m 	max.poll.interval.ms = 300000
+[36mkafka-reactor      |[0m 	max.poll.records = 500
+[36mkafka-reactor      |[0m 	metadata.max.age.ms = 300000
+[36mkafka-reactor      |[0m 	metric.reporters = []
+[36mkafka-reactor      |[0m 	metrics.num.samples = 2
+[36mkafka-reactor      |[0m 	metrics.recording.level = INFO
+[36mkafka-reactor      |[0m 	metrics.sample.window.ms = 30000
+[36mkafka-reactor      |[0m 	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+[36mkafka-reactor      |[0m 	receive.buffer.bytes = 65536
+[36mkafka-reactor      |[0m 	reconnect.backoff.max.ms = 1000
+[36mkafka-reactor      |[0m 	reconnect.backoff.ms = 50
+[36mkafka-reactor      |[0m 	request.timeout.ms = 30000
+[36mkafka-reactor      |[0m 	retry.backoff.ms = 100
+[36mkafka-reactor      |[0m 	sasl.client.callback.handler.class = null
+[36mkafka-reactor      |[0m 	sasl.jaas.config = null
+[36mkafka-reactor      |[0m 	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+[36mkafka-reactor      |[0m 	sasl.kerberos.min.time.before.relogin = 60000
+[36mkafka-reactor      |[0m 	sasl.kerberos.service.name = null
+[36mkafka-reactor      |[0m 	sasl.kerberos.ticket.renew.jitter = 0.05
+[36mkafka-reactor      |[0m 	sasl.kerberos.ticket.renew.window.factor = 0.8
+[36mkafka-reactor      |[0m 	sasl.login.callback.handler.class = null
+[36mkafka-reactor      |[0m 	sasl.login.class = null
+[36mkafka-reactor      |[0m 	sasl.login.refresh.buffer.seconds = 300
+[36mkafka-reactor      |[0m 	sasl.login.refresh.min.period.seconds = 60
+[36mkafka-reactor      |[0m 	sasl.login.refresh.window.factor = 0.8
+[36mkafka-reactor      |[0m 	sasl.login.refresh.window.jitter = 0.05
+[36mkafka-reactor      |[0m 	sasl.mechanism = GSSAPI
+[36mkafka-reactor      |[0m 	security.protocol = PLAINTEXT
+[36mkafka-reactor      |[0m 	send.buffer.bytes = 131072
+[36mkafka-reactor      |[0m 	session.timeout.ms = 10000
+[36mkafka-reactor      |[0m 	ssl.cipher.suites = null
+[36mkafka-reactor      |[0m 	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+[36mkafka-reactor      |[0m 	ssl.endpoint.identification.algorithm = https
+[36mkafka-reactor      |[0m 	ssl.key.password = null
+[36mkafka-reactor      |[0m 	ssl.keymanager.algorithm = SunX509
+[36mkafka-reactor      |[0m 	ssl.keystore.location = null
+[36mkafka-reactor      |[0m 	ssl.keystore.password = null
+[36mkafka-reactor      |[0m 	ssl.keystore.type = JKS
+[36mkafka-reactor      |[0m 	ssl.protocol = TLS
+[36mkafka-reactor      |[0m 	ssl.provider = null
+[36mkafka-reactor      |[0m 	ssl.secure.random.implementation = null
+[36mkafka-reactor      |[0m 	ssl.trustmanager.algorithm = PKIX
+[36mkafka-reactor      |[0m 	ssl.truststore.location = null
+[36mkafka-reactor      |[0m 	ssl.truststore.password = null
+[36mkafka-reactor      |[0m 	ssl.truststore.type = JKS
+[36mkafka-reactor      |[0m 	value.deserializer = class io.confluent.kafka.serializers.KafkaAvroDeserializer
+[36mkafka-reactor      |[0m 
+[36mkafka-reactor      |[0m 2019-04-15 13:33:47.646  INFO 1 --- [           main] i.c.k.s.KafkaAvroDeserializerConfig      : KafkaAvroDeserializerConfig values: 
+[36mkafka-reactor      |[0m 	schema.registry.url = [http://schema-registry:8081]
+[36mkafka-reactor      |[0m 	basic.auth.user.info = [hidden]
+[36mkafka-reactor      |[0m 	auto.register.schemas = true
+[36mkafka-reactor      |[0m 	max.schemas.per.subject = 1000
+[36mkafka-reactor      |[0m 	basic.auth.credentials.source = URL
+[36mkafka-reactor      |[0m 	schema.registry.basic.auth.user.info = [hidden]
+[36mkafka-reactor      |[0m 	specific.avro.reader = true
+[36mkafka-reactor      |[0m 	value.subject.name.strategy = class io.confluent.kafka.serializers.subject.TopicNameStrategy
+[36mkafka-reactor      |[0m 	key.subject.name.strategy = class io.confluent.kafka.serializers.subject.TopicNameStrategy
+[36mkafka-reactor      |[0m 
+[36mkafka-reactor      |[0m 2019-04-15 13:33:47.695  INFO 1 --- [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka version : 2.0.0
+[36mkafka-reactor      |[0m 2019-04-15 13:33:47.696  INFO 1 --- [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId : 3402a8361b734732
+[36mkafka-reactor      |[0m 2019-04-15 13:33:47.701  INFO 1 --- [           main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 
+[36mkafka-reactor      |[0m 2019-04-15 13:33:47.707  INFO 1 --- [           main] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+[36mkafka-reactor      |[0m 	auto.commit.interval.ms = 5000
+[36mkafka-reactor      |[0m 	auto.offset.reset = earliest
+[36mkafka-reactor      |[0m 	bootstrap.servers = [http://kafka:29092]
+[36mkafka-reactor      |[0m 	check.crcs = true
+[36mkafka-reactor      |[0m 	client.id = kafka-samples-client-0
+[36mkafka-reactor      |[0m 	connections.max.idle.ms = 540000
+[36mkafka-reactor      |[0m 	default.api.timeout.ms = 60000
+[36mkafka-reactor      |[0m 	enable.auto.commit = false
+[36mkafka-reactor      |[0m 	exclude.internal.topics = true
+[36mkafka-reactor      |[0m 	fetch.max.bytes = 52428800
+[36mkafka-reactor      |[0m 	fetch.max.wait.ms = 500
+[36mkafka-reactor      |[0m 	fetch.min.bytes = 1
+[36mkafka-reactor      |[0m 	group.id = kafka-samples
+[36mkafka-reactor      |[0m 	heartbeat.interval.ms = 3000
+[36mkafka-reactor      |[0m 	interceptor.classes = []
+[36mkafka-reactor      |[0m 	internal.leave.group.on.close = true
+[36mkafka-reactor      |[0m 	isolation.level = read_uncommitted
+[36mkafka-reactor      |[0m 	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+[36mkafka-reactor      |[0m 	max.partition.fetch.bytes = 1048576
+[36mkafka-reactor      |[0m 	max.poll.interval.ms = 300000
+[36mkafka-reactor      |[0m 	max.poll.records = 500
+[36mkafka-reactor      |[0m 	metadata.max.age.ms = 300000
+[36mkafka-reactor      |[0m 	metric.reporters = []
+[36mkafka-reactor      |[0m 	metrics.num.samples = 2
+[36mkafka-reactor      |[0m 	metrics.recording.level = INFO
+[36mkafka-reactor      |[0m 	metrics.sample.window.ms = 30000
+[36mkafka-reactor      |[0m 	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+[36mkafka-reactor      |[0m 	receive.buffer.bytes = 65536
+[36mkafka-reactor      |[0m 	reconnect.backoff.max.ms = 1000
+[36mkafka-reactor      |[0m 	reconnect.backoff.ms = 50
+[36mkafka-reactor      |[0m 	request.timeout.ms = 30000
+[36mkafka-reactor      |[0m 	retry.backoff.ms = 100
+[36mkafka-reactor      |[0m 	sasl.client.callback.handler.class = null
+[36mkafka-reactor      |[0m 	sasl.jaas.config = null
+[36mkafka-reactor      |[0m 	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+[36mkafka-reactor      |[0m 	sasl.kerberos.min.time.before.relogin = 60000
+[36mkafka-reactor      |[0m 	sasl.kerberos.service.name = null
+[36mkafka-reactor      |[0m 	sasl.kerberos.ticket.renew.jitter = 0.05
+[36mkafka-reactor      |[0m 	sasl.kerberos.ticket.renew.window.factor = 0.8
+[36mkafka-reactor      |[0m 	sasl.login.callback.handler.class = null
+[36mkafka-reactor      |[0m 	sasl.login.class = null
+[36mkafka-reactor      |[0m 	sasl.login.refresh.buffer.seconds = 300
+[36mkafka-reactor      |[0m 	sasl.login.refresh.min.period.seconds = 60
+[36mkafka-reactor      |[0m 	sasl.login.refresh.window.factor = 0.8
+[36mkafka-reactor      |[0m 	sasl.login.refresh.window.jitter = 0.05
+[36mkafka-reactor      |[0m 	sasl.mechanism = GSSAPI
+[36mkafka-reactor      |[0m 	security.protocol = PLAINTEXT
+[36mkafka-reactor      |[0m 	send.buffer.bytes = 131072
+[36mkafka-reactor      |[0m 	session.timeout.ms = 10000
+[36mkafka-reactor      |[0m 	ssl.cipher.suites = null
+[36mkafka-reactor      |[0m 	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+[36mkafka-reactor      |[0m 	ssl.endpoint.identification.algorithm = https
+[36mkafka-reactor      |[0m 	ssl.key.password = null
+[36mkafka-reactor      |[0m 	ssl.keymanager.algorithm = SunX509
+[36mkafka-reactor      |[0m 	ssl.keystore.location = null
+[36mkafka-reactor      |[0m 	ssl.keystore.password = null
+[36mkafka-reactor      |[0m 	ssl.keystore.type = JKS
+[36mkafka-reactor      |[0m 	ssl.protocol = TLS
+[36mkafka-reactor      |[0m 	ssl.provider = null
+[36mkafka-reactor      |[0m 	ssl.secure.random.implementation = null
+[36mkafka-reactor      |[0m 	ssl.trustmanager.algorithm = PKIX
+[36mkafka-reactor      |[0m 	ssl.truststore.location = null
+[36mkafka-reactor      |[0m 	ssl.truststore.password = null
+[36mkafka-reactor      |[0m 	ssl.truststore.type = JKS
+[36mkafka-reactor      |[0m 	value.deserializer = class io.confluent.kafka.serializers.KafkaAvroDeserializer
+[36mkafka-reactor      |[0m 
+[36mkafka-reactor      |[0m 2019-04-15 13:33:47.708  INFO 1 --- [           main] i.c.k.s.KafkaAvroDeserializerConfig      : KafkaAvroDeserializerConfig values: 
+[36mkafka-reactor      |[0m 	schema.registry.url = [http://schema-registry:8081]
+[36mkafka-reactor      |[0m 	basic.auth.user.info = [hidden]
+[36mkafka-reactor      |[0m 	auto.register.schemas = true
+[36mkafka-reactor      |[0m 	max.schemas.per.subject = 1000
+[36mkafka-reactor      |[0m 	basic.auth.credentials.source = URL
+[36mkafka-reactor      |[0m 	schema.registry.basic.auth.user.info = [hidden]
+[36mkafka-reactor      |[0m 	specific.avro.reader = true
+[36mkafka-reactor      |[0m 	value.subject.name.strategy = class io.confluent.kafka.serializers.subject.TopicNameStrategy
+[36mkafka-reactor      |[0m 	key.subject.name.strategy = class io.confluent.kafka.serializers.subject.TopicNameStrategy
+[36mkafka-reactor      |[0m 
+[36mkafka-reactor      |[0m 2019-04-15 13:33:47.716  INFO 1 --- [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka version : 2.0.0
+[36mkafka-reactor      |[0m 2019-04-15 13:33:47.716  INFO 1 --- [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId : 3402a8361b734732
+[36mkafka-reactor      |[0m 2019-04-15 13:33:47.721  WARN 1 --- [           main] o.a.kafka.common.utils.AppInfoParser     : Error registering AppInfo mbean
+[36mkafka-reactor      |[0m 
+[36mkafka-reactor      |[0m javax.management.InstanceAlreadyExistsException: kafka.consumer:type=app-info,id=kafka-samples-client-0
+[36mkafka-reactor      |[0m 	at com.sun.jmx.mbeanserver.Repository.addMBean(Repository.java:437) ~[na:1.8.0_202]
+[36mkafka-reactor      |[0m 	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerWithRepository(DefaultMBeanServerInterceptor.java:1898) ~[na:1.8.0_202]
+[36mkafka-reactor      |[0m 	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerDynamicMBean(DefaultMBeanServerInterceptor.java:966) ~[na:1.8.0_202]
+[36mkafka-reactor      |[0m 	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerObject(DefaultMBeanServerInterceptor.java:900) ~[na:1.8.0_202]
+[36mkafka-reactor      |[0m 	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerMBean(DefaultMBeanServerInterceptor.java:324) ~[na:1.8.0_202]
+[36mkafka-reactor      |[0m 	at com.sun.jmx.mbeanserver.JmxMBeanServer.registerMBean(JmxMBeanServer.java:522) ~[na:1.8.0_202]
+[36mkafka-reactor      |[0m 	at org.apache.kafka.common.utils.AppInfoParser.registerAppInfo(AppInfoParser.java:62) ~[kafka-clients-2.0.0.jar!/:na]
+[36mkafka-reactor      |[0m 	at org.apache.kafka.clients.consumer.KafkaConsumer.<init>(KafkaConsumer.java:791) [kafka-clients-2.0.0.jar!/:na]
+[36mkafka-reactor      |[0m 	at org.apache.kafka.clients.consumer.KafkaConsumer.<init>(KafkaConsumer.java:615) [kafka-clients-2.0.0.jar!/:na]
+[36mkafka-reactor      |[0m 	at org.springframework.kafka.core.DefaultKafkaConsumerFactory.createKafkaConsumer(DefaultKafkaConsumerFactory.java:139) [spring-kafka-2.1.10.RELEASE.jar!/:2.1.10.RELEASE]
+[36mkafka-reactor      |[0m 	at org.springframework.kafka.core.DefaultKafkaConsumerFactory.createKafkaConsumer(DefaultKafkaConsumerFactory.java:134) [spring-kafka-2.1.10.RELEASE.jar!/:2.1.10.RELEASE]
+[36mkafka-reactor      |[0m 	at org.springframework.kafka.core.DefaultKafkaConsumerFactory.createConsumer(DefaultKafkaConsumerFactory.java:102) [spring-kafka-2.1.10.RELEASE.jar!/:2.1.10.RELEASE]
+[36mkafka-reactor      |[0m 	at org.springframework.kafka.listener.KafkaMessageListenerContainer$ListenerConsumer.<init>(KafkaMessageListenerContainer.java:426) [spring-kafka-2.1.10.RELEASE.jar!/:2.1.10.RELEASE]
+[36mkafka-reactor      |[0m 	at org.springframework.kafka.listener.KafkaMessageListenerContainer.doStart(KafkaMessageListenerContainer.java:260) [spring-kafka-2.1.10.RELEASE.jar!/:2.1.10.RELEASE]
+[36mkafka-reactor      |[0m 	at org.springframework.kafka.listener.AbstractMessageListenerContainer.start(AbstractMessageListenerContainer.java:269) [spring-kafka-2.1.10.RELEASE.jar!/:2.1.10.RELEASE]
+[36mkafka-reactor      |[0m 	at org.springframework.kafka.listener.ConcurrentMessageListenerContainer.doStart(ConcurrentMessageListenerContainer.java:164) [spring-kafka-2.1.10.RELEASE.jar!/:2.1.10.RELEASE]
+[36mkafka-reactor      |[0m 	at org.springframework.kafka.listener.AbstractMessageListenerContainer.start(AbstractMessageListenerContainer.java:269) [spring-kafka-2.1.10.RELEASE.jar!/:2.1.10.RELEASE]
+[36mkafka-reactor      |[0m 	at org.springframework.kafka.config.KafkaListenerEndpointRegistry.startIfNecessary(KafkaListenerEndpointRegistry.java:289) [spring-kafka-2.1.10.RELEASE.jar!/:2.1.10.RELEASE]
+[36mkafka-reactor      |[0m 	at org.springframework.kafka.config.KafkaListenerEndpointRegistry.start(KafkaListenerEndpointRegistry.java:238) [spring-kafka-2.1.10.RELEASE.jar!/:2.1.10.RELEASE]
+[36mkafka-reactor      |[0m 	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:182) [spring-context-5.0.9.RELEASE.jar!/:5.0.9.RELEASE]
+[36mkafka-reactor      |[0m 	at org.springframework.context.support.DefaultLifecycleProcessor.access$200(DefaultLifecycleProcessor.java:53) [spring-context-5.0.9.RELEASE.jar!/:5.0.9.RELEASE]
+[36mkafka-reactor      |[0m 	at org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.start(DefaultLifecycleProcessor.java:360) [spring-context-5.0.9.RELEASE.jar!/:5.0.9.RELEASE]
+[36mkafka-reactor      |[0m 	at org.springframework.context.support.DefaultLifecycleProcessor.startBeans(DefaultLifecycleProcessor.java:158) [spring-context-5.0.9.RELEASE.jar!/:5.0.9.RELEASE]
+[36mkafka-reactor      |[0m 	at org.springframework.context.support.DefaultLifecycleProcessor.onRefresh(DefaultLifecycleProcessor.java:122) [spring-context-5.0.9.RELEASE.jar!/:5.0.9.RELEASE]
+[36mkafka-reactor      |[0m 	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:885) [spring-context-5.0.9.RELEASE.jar!/:5.0.9.RELEASE]
+[36mkafka-reactor      |[0m 	at org.springframework.boot.web.reactive.context.ReactiveWebServerApplicationContext.finishRefresh(ReactiveWebServerApplicationContext.java:83) [spring-boot-2.0.5.RELEASE.jar!/:2.0.5.RELEASE]
+[36mkafka-reactor      |[0m 	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:553) [spring-context-5.0.9.RELEASE.jar!/:5.0.9.RELEASE]
+[36mkafka-reactor      |[0m 	at org.springframework.boot.web.reactive.context.ReactiveWebServerApplicationContext.refresh(ReactiveWebServerApplicationContext.java:61) [spring-boot-2.0.5.RELEASE.jar!/:2.0.5.RELEASE]
+[36mkafka-reactor      |[0m 	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:780) [spring-boot-2.0.5.RELEASE.jar!/:2.0.5.RELEASE]
+[36mkafka-reactor      |[0m 	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:412) [spring-boot-2.0.5.RELEASE.jar!/:2.0.5.RELEASE]
+[36mkafka-reactor      |[0m 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:333) [spring-boot-2.0.5.RELEASE.jar!/:2.0.5.RELEASE]
+[36mkafka-reactor      |[0m 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1277) [spring-boot-2.0.5.RELEASE.jar!/:2.0.5.RELEASE]
+[36mkafka-reactor      |[0m 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1265) [spring-boot-2.0.5.RELEASE.jar!/:2.0.5.RELEASE]
+[36mkafka-reactor      |[0m 	at com.ing.kafka.reactor.Application.main(Application.java:17) [classes!/:na]
+[36mkafka-reactor      |[0m 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_202]
+[36mkafka-reactor      |[0m 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_202]
+[36mkafka-reactor      |[0m 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_202]
+[36mkafka-reactor      |[0m 	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_202]
+[36mkafka-reactor      |[0m 	at org.springframework.boot.loader.MainMethodRunner.run(MainMethodRunner.java:48) [app.jar:na]
+[36mkafka-reactor      |[0m 	at org.springframework.boot.loader.Launcher.launch(Launcher.java:87) [app.jar:na]
+[36mkafka-reactor      |[0m 	at org.springframework.boot.loader.Launcher.launch(Launcher.java:50) [app.jar:na]
+[36mkafka-reactor      |[0m 	at org.springframework.boot.loader.JarLauncher.main(JarLauncher.java:51) [app.jar:na]
+[36mkafka-reactor      |[0m 
+[36mkafka-reactor      |[0m 2019-04-15 13:33:47.722  INFO 1 --- [           main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 
+[36mkafka-reactor      |[0m 2019-04-15 13:33:47.726  INFO 1 --- [ntainer#0-0-C-1] org.apache.kafka.clients.Metadata        : Cluster ID: lP3Mp3PZRROXTh5E4AEMrg
+[36mkafka-reactor      |[0m 2019-04-15 13:33:47.729  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Discovered group coordinator kafka:29092 (id: 2147483646 rack: null)
+[36mkafka-reactor      |[0m 2019-04-15 13:33:47.730  INFO 1 --- [ntainer#1-0-C-1] org.apache.kafka.clients.Metadata        : Cluster ID: lP3Mp3PZRROXTh5E4AEMrg
+[36mkafka-reactor      |[0m 2019-04-15 13:33:47.731  INFO 1 --- [ntainer#1-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Discovered group coordinator kafka:29092 (id: 2147483646 rack: null)
+[36mkafka-reactor      |[0m 2019-04-15 13:33:47.735  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Revoking previously assigned partitions []
+[36mkafka-reactor      |[0m 2019-04-15 13:33:47.736  INFO 1 --- [ntainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : partitions revoked: []
+[36mkafka-reactor      |[0m 2019-04-15 13:33:47.736  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] (Re-)joining group
+[36mkafka-reactor      |[0m 2019-04-15 13:33:47.740  INFO 1 --- [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Revoking previously assigned partitions []
+[36mkafka-reactor      |[0m 2019-04-15 13:33:47.740  INFO 1 --- [ntainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : partitions revoked: []
+[36mkafka-reactor      |[0m 2019-04-15 13:33:47.740  INFO 1 --- [ntainer#1-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] (Re-)joining group
+[36mkafka-reactor      |[0m 2019-04-15 13:33:47.766  INFO 1 --- [           main] org.xnio                                 : XNIO version 3.3.8.Final
+[36mkafka-reactor      |[0m 2019-04-15 13:33:47.792  INFO 1 --- [           main] org.xnio.nio                             : XNIO NIO Implementation Version 3.3.8.Final
+[36mkafka-reactor      |[0m 2019-04-15 13:33:47.899  INFO 1 --- [           main] o.s.b.w.e.u.UndertowServletWebServer     : Undertow started on port(s) 8080 (http)
+[36mkafka-reactor      |[0m 2019-04-15 13:33:47.904  INFO 1 --- [           main] com.ing.kafka.reactor.Application        : Started Application in 5.679 seconds (JVM running for 6.257)
+[36mkafka-reactor      |[0m 2019-04-15 13:33:50.801  INFO 1 --- [ntainer#1-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Successfully joined group with generation 22
+[36mkafka-reactor      |[0m 2019-04-15 13:33:50.803  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Successfully joined group with generation 22
+[36mkafka-reactor      |[0m 2019-04-15 13:33:50.805  INFO 1 --- [ntainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Setting newly assigned partitions [mysqlcdc.test.RawTransaction-0]
+[36mkafka-reactor      |[0m 2019-04-15 13:33:50.805  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Setting newly assigned partitions [retry-topic-0]
+[36mkafka-reactor      |[0m 2019-04-15 13:33:50.839  INFO 1 --- [ntainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : partitions assigned: [retry-topic-0]
+[36mkafka-reactor      |[0m 2019-04-15 13:33:50.839  INFO 1 --- [ntainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : partitions assigned: [mysqlcdc.test.RawTransaction-0]
+[36mkafka-reactor      |[0m 2019-04-15 13:33:51.274  INFO 1 --- [ntainer#1-0-C-1] c.i.k.r.listener.RawTransactionListener  : ------------------
+[36mkafka-reactor      |[0m 2019-04-15 13:33:51.275  INFO 1 --- [ntainer#1-0-C-1] c.i.k.r.listener.RawTransactionListener  : in receiver -- method
+[36mkafka-reactor      |[0m 2019-04-15 13:33:51.275  INFO 1 --- [ntainer#1-0-C-1] c.i.k.r.listener.RawTransactionListener  : ------------------
+[36mkafka-reactor      |[0m 2019-04-15 13:33:51.335  INFO 1 --- [kafka-samples-1] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+[36mkafka-reactor      |[0m 	auto.commit.interval.ms = 5000
+[36mkafka-reactor      |[0m 	auto.offset.reset = earliest
+[36mkafka-reactor      |[0m 	bootstrap.servers = [http://kafka:29092]
+[36mkafka-reactor      |[0m 	check.crcs = true
+[36mkafka-reactor      |[0m 	client.id = kafka-samples-client
+[36mkafka-reactor      |[0m 	connections.max.idle.ms = 540000
+[36mkafka-reactor      |[0m 	default.api.timeout.ms = 60000
+[36mkafka-reactor      |[0m 	enable.auto.commit = false
+[36mkafka-reactor      |[0m 	exclude.internal.topics = true
+[36mkafka-reactor      |[0m 	fetch.max.bytes = 52428800
+[36mkafka-reactor      |[0m 	fetch.max.wait.ms = 500
+[36mkafka-reactor      |[0m 	fetch.min.bytes = 1
+[36mkafka-reactor      |[0m 	group.id = kafka-samples
+[36mkafka-reactor      |[0m 	heartbeat.interval.ms = 3000
+[36mkafka-reactor      |[0m 	interceptor.classes = []
+[36mkafka-reactor      |[0m 	internal.leave.group.on.close = true
+[36mkafka-reactor      |[0m 	isolation.level = read_uncommitted
+[36mkafka-reactor      |[0m 	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+[36mkafka-reactor      |[0m 	max.partition.fetch.bytes = 1048576
+[36mkafka-reactor      |[0m 	max.poll.interval.ms = 300000
+[36mkafka-reactor      |[0m 	max.poll.records = 500
+[36mkafka-reactor      |[0m 	metadata.max.age.ms = 300000
+[36mkafka-reactor      |[0m 	metric.reporters = []
+[36mkafka-reactor      |[0m 	metrics.num.samples = 2
+[36mkafka-reactor      |[0m 	metrics.recording.level = INFO
+[36mkafka-reactor      |[0m 	metrics.sample.window.ms = 30000
+[36mkafka-reactor      |[0m 	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+[36mkafka-reactor      |[0m 	receive.buffer.bytes = 65536
+[36mkafka-reactor      |[0m 	reconnect.backoff.max.ms = 1000
+[36mkafka-reactor      |[0m 	reconnect.backoff.ms = 50
+[36mkafka-reactor      |[0m 	request.timeout.ms = 30000
+[36mkafka-reactor      |[0m 	retry.backoff.ms = 100
+[36mkafka-reactor      |[0m 	sasl.client.callback.handler.class = null
+[36mkafka-reactor      |[0m 	sasl.jaas.config = null
+[36mkafka-reactor      |[0m 	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+[36mkafka-reactor      |[0m 	sasl.kerberos.min.time.before.relogin = 60000
+[36mkafka-reactor      |[0m 	sasl.kerberos.service.name = null
+[36mkafka-reactor      |[0m 	sasl.kerberos.ticket.renew.jitter = 0.05
+[36mkafka-reactor      |[0m 	sasl.kerberos.ticket.renew.window.factor = 0.8
+[36mkafka-reactor      |[0m 	sasl.login.callback.handler.class = null
+[36mkafka-reactor      |[0m 	sasl.login.class = null
+[36mkafka-reactor      |[0m 	sasl.login.refresh.buffer.seconds = 300
+[36mkafka-reactor      |[0m 	sasl.login.refresh.min.period.seconds = 60
+[36mkafka-reactor      |[0m 	sasl.login.refresh.window.factor = 0.8
+[36mkafka-reactor      |[0m 	sasl.login.refresh.window.jitter = 0.05
+[36mkafka-reactor      |[0m 	sasl.mechanism = GSSAPI
+[36mkafka-reactor      |[0m 	security.protocol = PLAINTEXT
+[36mkafka-reactor      |[0m 	send.buffer.bytes = 131072
+[36mkafka-reactor      |[0m 	session.timeout.ms = 10000
+[36mkafka-reactor      |[0m 	ssl.cipher.suites = null
+[36mkafka-reactor      |[0m 	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+[36mkafka-reactor      |[0m 	ssl.endpoint.identification.algorithm = https
+[36mkafka-reactor      |[0m 	ssl.key.password = null
+[36mkafka-reactor      |[0m 	ssl.keymanager.algorithm = SunX509
+[36mkafka-reactor      |[0m 	ssl.keystore.location = null
+[36mkafka-reactor      |[0m 	ssl.keystore.password = null
+[36mkafka-reactor      |[0m 	ssl.keystore.type = JKS
+[36mkafka-reactor      |[0m 	ssl.protocol = TLS
+[36mkafka-reactor      |[0m 	ssl.provider = null
+[36mkafka-reactor      |[0m 	ssl.secure.random.implementation = null
+[36mkafka-reactor      |[0m 	ssl.trustmanager.algorithm = PKIX
+[36mkafka-reactor      |[0m 	ssl.truststore.location = null
+[36mkafka-reactor      |[0m 	ssl.truststore.password = null
+[36mkafka-reactor      |[0m 	ssl.truststore.type = JKS
+[36mkafka-reactor      |[0m 	value.deserializer = class io.confluent.kafka.serializers.KafkaAvroDeserializer
+[36mkafka-reactor      |[0m 
+[36mkafka-reactor      |[0m 2019-04-15 13:33:51.336  INFO 1 --- [kafka-samples-1] i.c.k.s.KafkaAvroDeserializerConfig      : KafkaAvroDeserializerConfig values: 
+[36mkafka-reactor      |[0m 	schema.registry.url = [http://schema-registry:8081]
+[36mkafka-reactor      |[0m 	basic.auth.user.info = [hidden]
+[36mkafka-reactor      |[0m 	auto.register.schemas = true
+[36mkafka-reactor      |[0m 	max.schemas.per.subject = 1000
+[36mkafka-reactor      |[0m 	basic.auth.credentials.source = URL
+[36mkafka-reactor      |[0m 	schema.registry.basic.auth.user.info = [hidden]
+[36mkafka-reactor      |[0m 	specific.avro.reader = true
+[36mkafka-reactor      |[0m 	value.subject.name.strategy = class io.confluent.kafka.serializers.subject.TopicNameStrategy
+[36mkafka-reactor      |[0m 	key.subject.name.strategy = class io.confluent.kafka.serializers.subject.TopicNameStrategy
+[36mkafka-reactor      |[0m 
+[36mkafka-reactor      |[0m 2019-04-15 13:33:51.343  INFO 1 --- [kafka-samples-1] o.a.kafka.common.utils.AppInfoParser     : Kafka version : 2.0.0
+[36mkafka-reactor      |[0m 2019-04-15 13:33:51.343  INFO 1 --- [kafka-samples-1] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId : 3402a8361b734732
+[36mkafka-reactor      |[0m 2019-04-15 13:33:51.349  INFO 1 --- [kafka-samples-1] org.apache.kafka.clients.Metadata        : Cluster ID: lP3Mp3PZRROXTh5E4AEMrg
+[36mkafka-reactor      |[0m 2019-04-15 13:33:51.351  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] Discovered group coordinator kafka:29092 (id: 2147483646 rack: null)
+[36mkafka-reactor      |[0m 2019-04-15 13:33:51.352  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] Revoking previously assigned partitions []
+[36mkafka-reactor      |[0m 2019-04-15 13:33:51.352  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] (Re-)joining group
+[36mkafka-reactor      |[0m 2019-04-15 13:33:53.807  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:33:53.808  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Revoking previously assigned partitions [retry-topic-0]
+[36mkafka-reactor      |[0m 2019-04-15 13:33:53.808  INFO 1 --- [ntainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : partitions revoked: [retry-topic-0]
+[36mkafka-reactor      |[0m 2019-04-15 13:33:53.808  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] (Re-)joining group
+[36mkafka-reactor      |[0m 2019-04-15 13:33:53.931  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:33:56.940  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:33:59.948  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:34:02.956  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:34:05.965  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:34:08.973  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:34:11.981  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:34:14.989  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:34:18.004  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:34:21.011  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:34:21.404  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] Group coordinator kafka:29092 (id: 2147483646 rack: null) is unavailable or invalid, will attempt rediscovery
+[36mkafka-reactor      |[0m 2019-04-15 13:34:21.511  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] Discovered group coordinator kafka:29092 (id: 2147483646 rack: null)
+[36mkafka-reactor      |[0m 2019-04-15 13:34:21.511  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] (Re-)joining group
+[36mkafka-reactor      |[0m 2019-04-15 13:34:23.897  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Group coordinator kafka:29092 (id: 2147483646 rack: null) is unavailable or invalid, will attempt rediscovery
+[36mkafka-reactor      |[0m 2019-04-15 13:34:23.999  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Discovered group coordinator kafka:29092 (id: 2147483646 rack: null)
+[36mkafka-reactor      |[0m 2019-04-15 13:34:23.999  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] (Re-)joining group
+[36mkafka-reactor      |[0m 2019-04-15 13:34:24.018  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:34:27.203  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:34:30.210  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:34:33.219  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:34:36.226  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:34:39.233  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:34:42.241  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:34:45.248  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:34:48.255  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:34:51.262  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:34:51.529  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] Group coordinator kafka:29092 (id: 2147483646 rack: null) is unavailable or invalid, will attempt rediscovery
+[36mkafka-reactor      |[0m 2019-04-15 13:34:51.631  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] Discovered group coordinator kafka:29092 (id: 2147483646 rack: null)
+[36mkafka-reactor      |[0m 2019-04-15 13:34:51.633  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] (Re-)joining group
+[36mkafka-reactor      |[0m 2019-04-15 13:34:54.027  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Group coordinator kafka:29092 (id: 2147483646 rack: null) is unavailable or invalid, will attempt rediscovery
+[36mkafka-reactor      |[0m 2019-04-15 13:34:54.130  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Discovered group coordinator kafka:29092 (id: 2147483646 rack: null)
+[36mkafka-reactor      |[0m 2019-04-15 13:34:54.130  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] (Re-)joining group
+[36mkafka-reactor      |[0m 2019-04-15 13:34:54.269  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:34:57.276  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:35:00.283  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:35:03.290  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:35:06.297  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:35:09.305  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:35:12.312  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:35:15.319  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:35:18.327  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:35:21.334  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:35:21.688  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] Group coordinator kafka:29092 (id: 2147483646 rack: null) is unavailable or invalid, will attempt rediscovery
+[36mkafka-reactor      |[0m 2019-04-15 13:35:21.791  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] Discovered group coordinator kafka:29092 (id: 2147483646 rack: null)
+[36mkafka-reactor      |[0m 2019-04-15 13:35:21.792  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] (Re-)joining group
+[36mkafka-reactor      |[0m 2019-04-15 13:35:24.160  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Group coordinator kafka:29092 (id: 2147483646 rack: null) is unavailable or invalid, will attempt rediscovery
+[36mkafka-reactor      |[0m 2019-04-15 13:35:24.263  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Discovered group coordinator kafka:29092 (id: 2147483646 rack: null)
+[36mkafka-reactor      |[0m 2019-04-15 13:35:24.264  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] (Re-)joining group
+[36mkafka-reactor      |[0m 2019-04-15 13:35:24.341  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:35:27.348  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:35:30.356  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:35:33.362  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:35:36.369  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:35:39.376  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:35:42.383  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:35:45.390  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:35:48.397  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:35:51.404  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:35:51.884  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] Group coordinator kafka:29092 (id: 2147483646 rack: null) is unavailable or invalid, will attempt rediscovery
+[36mkafka-reactor      |[0m 2019-04-15 13:35:51.987  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] Discovered group coordinator kafka:29092 (id: 2147483646 rack: null)
+[36mkafka-reactor      |[0m 2019-04-15 13:35:51.988  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] (Re-)joining group
+[36mkafka-reactor      |[0m 2019-04-15 13:35:54.295  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Group coordinator kafka:29092 (id: 2147483646 rack: null) is unavailable or invalid, will attempt rediscovery
+[36mkafka-reactor      |[0m 2019-04-15 13:35:54.398  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Discovered group coordinator kafka:29092 (id: 2147483646 rack: null)
+[36mkafka-reactor      |[0m 2019-04-15 13:35:54.398  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] (Re-)joining group
+[36mkafka-reactor      |[0m 2019-04-15 13:35:54.411  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:35:57.417  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:36:00.424  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:36:03.430  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:36:06.437  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:36:09.443  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:36:12.450  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:36:15.456  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:36:18.463  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:36:21.469  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:36:22.072  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] Group coordinator kafka:29092 (id: 2147483646 rack: null) is unavailable or invalid, will attempt rediscovery
+[36mkafka-reactor      |[0m 2019-04-15 13:36:22.177  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] Discovered group coordinator kafka:29092 (id: 2147483646 rack: null)
+[36mkafka-reactor      |[0m 2019-04-15 13:36:22.178  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] (Re-)joining group
+[36mkafka-reactor      |[0m 2019-04-15 13:36:24.423  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Group coordinator kafka:29092 (id: 2147483646 rack: null) is unavailable or invalid, will attempt rediscovery
+[36mkafka-reactor      |[0m 2019-04-15 13:36:24.476  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:36:24.526  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Discovered group coordinator kafka:29092 (id: 2147483646 rack: null)
+[36mkafka-reactor      |[0m 2019-04-15 13:36:24.527  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] (Re-)joining group
+[36mkafka-reactor      |[0m 2019-04-15 13:36:27.483  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:36:30.490  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:36:33.496  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:36:36.505  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:36:39.511  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:36:42.517  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:36:45.525  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:36:48.545  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:36:51.552  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:36:52.261  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] Group coordinator kafka:29092 (id: 2147483646 rack: null) is unavailable or invalid, will attempt rediscovery
+[36mkafka-reactor      |[0m 2019-04-15 13:36:52.365  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] Discovered group coordinator kafka:29092 (id: 2147483646 rack: null)
+[36mkafka-reactor      |[0m 2019-04-15 13:36:52.366  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] (Re-)joining group
+[36mkafka-reactor      |[0m 2019-04-15 13:36:54.553  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Group coordinator kafka:29092 (id: 2147483646 rack: null) is unavailable or invalid, will attempt rediscovery
+[36mkafka-reactor      |[0m 2019-04-15 13:36:54.578  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:36:54.655  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Discovered group coordinator kafka:29092 (id: 2147483646 rack: null)
+[36mkafka-reactor      |[0m 2019-04-15 13:36:54.656  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] (Re-)joining group
+[36mkafka-reactor      |[0m 2019-04-15 13:36:57.583  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:37:00.589  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:37:03.595  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:37:06.601  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:37:09.607  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:37:12.613  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:37:15.619  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:37:18.626  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:37:21.632  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:37:22.459  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] Group coordinator kafka:29092 (id: 2147483646 rack: null) is unavailable or invalid, will attempt rediscovery
+[36mkafka-reactor      |[0m 2019-04-15 13:37:22.562  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] Discovered group coordinator kafka:29092 (id: 2147483646 rack: null)
+[36mkafka-reactor      |[0m 2019-04-15 13:37:22.562  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] (Re-)joining group
+[36mkafka-reactor      |[0m 2019-04-15 13:37:24.638  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:37:24.684  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Group coordinator kafka:29092 (id: 2147483646 rack: null) is unavailable or invalid, will attempt rediscovery
+[36mkafka-reactor      |[0m 2019-04-15 13:37:24.786  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Discovered group coordinator kafka:29092 (id: 2147483646 rack: null)
+[36mkafka-reactor      |[0m 2019-04-15 13:37:24.787  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] (Re-)joining group
+[36mkafka-reactor      |[0m 2019-04-15 13:37:27.645  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:37:30.651  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:37:33.657  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:37:36.663  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:37:39.669  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:37:42.675  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:37:45.681  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:37:48.687  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:37:51.693  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:37:52.631  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] Group coordinator kafka:29092 (id: 2147483646 rack: null) is unavailable or invalid, will attempt rediscovery
+[36mkafka-reactor      |[0m 2019-04-15 13:37:52.733  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] Discovered group coordinator kafka:29092 (id: 2147483646 rack: null)
+[36mkafka-reactor      |[0m 2019-04-15 13:37:52.734  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] (Re-)joining group
+[36mkafka-reactor      |[0m 2019-04-15 13:37:54.699  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:37:54.810  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Group coordinator kafka:29092 (id: 2147483646 rack: null) is unavailable or invalid, will attempt rediscovery
+[36mkafka-reactor      |[0m 2019-04-15 13:37:54.913  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Discovered group coordinator kafka:29092 (id: 2147483646 rack: null)
+[36mkafka-reactor      |[0m 2019-04-15 13:37:54.914  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] (Re-)joining group
+[36mkafka-reactor      |[0m 2019-04-15 13:37:57.743  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:38:00.751  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:38:03.770  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:38:06.793  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:38:09.822  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:38:12.827  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:38:15.834  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:38:18.841  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:38:21.884  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:38:22.755  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] Group coordinator kafka:29092 (id: 2147483646 rack: null) is unavailable or invalid, will attempt rediscovery
+[36mkafka-reactor      |[0m 2019-04-15 13:38:22.858  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] Discovered group coordinator kafka:29092 (id: 2147483646 rack: null)
+[36mkafka-reactor      |[0m 2019-04-15 13:38:22.859  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] (Re-)joining group
+[36mkafka-reactor      |[0m 2019-04-15 13:38:24.915  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:38:24.936  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Group coordinator kafka:29092 (id: 2147483646 rack: null) is unavailable or invalid, will attempt rediscovery
+[36mkafka-reactor      |[0m 2019-04-15 13:38:25.039  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Discovered group coordinator kafka:29092 (id: 2147483646 rack: null)
+[36mkafka-reactor      |[0m 2019-04-15 13:38:25.039  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] (Re-)joining group
+[36mkafka-reactor      |[0m 2019-04-15 13:38:27.921  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:38:30.921  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:38:33.928  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:38:36.933  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:38:39.939  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:38:42.997  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:38:46.025  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:38:49.033  INFO 1 --- [| kafka-samples] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:38:50.944  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Successfully joined group with generation 23
+[36mkafka-reactor      |[0m 2019-04-15 13:38:50.944  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] Successfully joined group with generation 23
+[36mkafka-reactor      |[0m 2019-04-15 13:38:50.944  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Setting newly assigned partitions [retry-topic-0]
+[36mkafka-reactor      |[0m 2019-04-15 13:38:50.944  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] Setting newly assigned partitions []
+[36mkafka-reactor      |[0m 2019-04-15 13:38:50.947  INFO 1 --- [ntainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : partitions assigned: [retry-topic-0]
+[36mkafka-reactor      |[0m 2019-04-15 13:39:02.947  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:39:02.947  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] Revoking previously assigned partitions []
+[36mkafka-reactor      |[0m 2019-04-15 13:39:02.947  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] (Re-)joining group
+[36mkafka-reactor      |[0m 2019-04-15 13:39:02.948  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:39:02.948  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Revoking previously assigned partitions [retry-topic-0]
+[36mkafka-reactor      |[0m 2019-04-15 13:39:02.948  INFO 1 --- [ntainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : partitions revoked: [retry-topic-0]
+[36mkafka-reactor      |[0m 2019-04-15 13:39:02.948  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] (Re-)joining group
+[36mkafka-reactor      |[0m 2019-04-15 13:39:02.952  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Successfully joined group with generation 24
+[36mkafka-reactor      |[0m 2019-04-15 13:39:02.952  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] Successfully joined group with generation 24
+[36mkafka-reactor      |[0m 2019-04-15 13:39:02.952  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] Setting newly assigned partitions [mysqlcdc.test.RawTransaction-0]
+[36mkafka-reactor      |[0m 2019-04-15 13:39:02.953  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Setting newly assigned partitions [retry-topic-0]
+[36mkafka-reactor      |[0m 2019-04-15 13:39:02.956  INFO 1 --- [ntainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : partitions assigned: [retry-topic-0]
+[36mkafka-reactor      |[0m receiverRecord.value :test
+[36mkafka-reactor      |[0m receiverRecord.value :[B@22699219
+[36mkafka-reactor      |[0m 2019-04-15 13:42:48.057  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Revoking previously assigned partitions [retry-topic-0]
+[36mkafka-reactor      |[0m 2019-04-15 13:42:48.057  INFO 1 --- [ntainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : partitions revoked: [retry-topic-0]
+[36mkafka-reactor      |[0m 2019-04-15 13:42:48.057  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] (Re-)joining group
+[36mkafka-reactor      |[0m 2019-04-15 13:42:50.976  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-15 13:42:50.976  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] Revoking previously assigned partitions [mysqlcdc.test.RawTransaction-0]
+[36mkafka-reactor      |[0m 2019-04-15 13:42:50.976  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] (Re-)joining group
+[36mkafka-reactor      |[0m 2019-04-15 13:42:50.980  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] Successfully joined group with generation 25
+[36mkafka-reactor      |[0m 2019-04-15 13:42:50.980  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Successfully joined group with generation 25
+[36mkafka-reactor      |[0m 2019-04-15 13:42:50.980  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] Setting newly assigned partitions [mysqlcdc.test.RawTransaction-0]
+[36mkafka-reactor      |[0m 2019-04-15 13:42:50.980  INFO 1 --- [ntainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=kafka-samples-client-0, groupId=kafka-samples] Setting newly assigned partitions [retry-topic-0]
+[36mkafka-reactor      |[0m 2019-04-15 13:42:50.983  INFO 1 --- [ntainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : partitions assigned: [retry-topic-0]
+[36mkafka-reactor      |[0m receiverRecord.value :test
+[36mkafka-reactor      |[0m receiverRecord.value :[B@22699219
+[36mkafka-reactor      |[0m 2019-04-19 05:53:28.852  INFO 1 --- [       Thread-4] onfigReactiveWebServerApplicationContext : Closing org.springframework.boot.web.reactive.context.AnnotationConfigReactiveWebServerApplicationContext@d70c109: startup date [Mon Apr 15 13:33:42 GMT 2019]; root of context hierarchy
+[36mkafka-reactor      |[0m 2019-04-19 05:53:28.857  INFO 1 --- [       Thread-4] o.s.c.support.DefaultLifecycleProcessor  : Stopping beans in phase 2147483547
+[36mkafka-reactor      |[0m 2019-04-19 05:53:29.000  INFO 1 --- [ntainer#0-0-C-1] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService
+[36mkafka-reactor      |[0m 2019-04-19 05:53:29.006  INFO 1 --- [ntainer#0-0-C-1] essageListenerContainer$ListenerConsumer : Consumer stopped
+[36mkafka-reactor      |[0m 2019-04-19 05:53:30.744  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] Attempt to heartbeat failed since group is rebalancing
+[36mkafka-reactor      |[0m 2019-04-19 05:53:30.745  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] Revoking previously assigned partitions [mysqlcdc.test.RawTransaction-0]
+[36mkafka-reactor      |[0m 2019-04-19 05:53:30.745  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] (Re-)joining group
+[36mkafka-reactor      |[0m 2019-04-19 05:53:30.755  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.AbstractCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] Successfully joined group with generation 26
+[36mkafka-reactor      |[0m 2019-04-19 05:53:30.756  INFO 1 --- [kafka-samples-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=kafka-samples-client, groupId=kafka-samples] Setting newly assigned partitions [mysqlcdc.test.RawTransaction-0]
+[36mkafka-reactor      |[0m receiverRecord.value :test
+[36mkafka-reactor      |[0m receiverRecord.value :[B@22699219
+[36mkafka-reactor exited with code 137
+[0m

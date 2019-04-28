@@ -12,7 +12,7 @@ buildscript {
     ext['commonsLangVersion'] = '3.4'
     ext['slf4jVersion'] = '1.7.12'
     ext['logbackVersion'] = '1.2.3'
-    ext['lombokVersion'] = '1.16.20'
+    ext['lombokVersion'] = '1.18.4'//'1.16.20'
     ext['modelMapperVersion'] = '1.1.0'
     ext['owaspVersion'] = '2.1.0.1'
     ext['vavrVersion'] = '0.9.0'
@@ -20,6 +20,7 @@ buildscript {
     ext['reactorKafkaVersion'] = '1.1.0.RELEASE'
     ext['micrometerVersion'] = '1.0.4'
     ext['confluentVersion'] = '5.0.0'
+    ext['commonsIoVersion'] = '1.3.2'
 
     repositories {
         jcenter()
@@ -27,6 +28,9 @@ buildscript {
         maven {
             url 'https://plugins.gradle.org/m2/'
         }
+//        maven {
+//            url 'https://projectlombok.org/edge-releases'
+//        }
     }
 
     dependencies {
@@ -36,6 +40,10 @@ buildscript {
         classpath 'com.moowork.gradle:gradle-node-plugin:1.1.0'
         classpath 'org.junit.platform:junit-platform-gradle-plugin:1.0.2'
         classpath "com.commercehub.gradle.plugin:gradle-avro-plugin:0.16.0"
+        classpath "io.franzbecker:gradle-lombok:2.2"
+//        classpath "net.ltgt.gradle:gradle-apt-plugin:0.21"
+//        classpath "io.freefair.gradle:lombok-plugin:3.2.0"
+        classpath "net.ltgt.gradle:gradle-apt-plugin:0.13"
     }
 }
 
@@ -55,6 +63,12 @@ apply plugin: 'com.moowork.node'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'org.junit.platform.gradle.plugin'
 apply plugin: "com.commercehub.gradle.plugin.avro"
+//apply plugin: "io.franzbecker.gradle-lombok"
+apply plugin: 'net.ltgt.apt'
+
+configurations {
+    apt
+}
 
 jar {
     group = 'kafka-reactive-sample2'
@@ -74,7 +88,17 @@ repositories {
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-sourceSets.main.java.srcDir new File(buildDir, 'generated/java')
+//sourceSets.main.java.srcDir new File(buildDir, 'generated/java')
+
+sourceSets {
+    main {
+        java {
+            srcDirs 'src/main/java'
+            srcDirs 'build/generated-main-avro-java'
+        }
+    }
+}
+
 
 //idea {
 //    module {
@@ -107,6 +131,9 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-actuator'
     compile 'org.springframework.boot:spring-boot-starter-cache'
 
+    // spring devtools
+    runtimeClasspath "org.springframework.boot:spring-boot-devtools"
+
 //    // Avro
     compile "org.apache.avro:avro:1.8.2"
 
@@ -136,11 +163,24 @@ dependencies {
     // apache commons lang
     compile "org.apache.commons:commons-lang3:${commonsLangVersion}"
 
+    // apache common io
+    compile "org.apache.commons:commons-io:${commonsIoVersion}"
+
     // jackson datatype
     compile "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
 
+    // fasterxml jackson
+    compile "com.fasterxml.jackson.dataformat:jackson-dataformat-avro"
+
     // lombok
+//    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+//    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+//    implementation "org.projectlombok:lombok:${lombokVersion}"
+
+    apt "org.projectlombok:lombok:${lombokVersion}"
     compileOnly "org.projectlombok:lombok:${lombokVersion}"
+//    testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
 
     // model mapper
     compile "org.modelmapper:modelmapper:${modelMapperVersion}"
@@ -205,9 +245,11 @@ dependencies {
 
 
 }
+
 bootRun {
 //    addResources = true
     sourceResources sourceSets.main
+
 }
 
 task wrapper(type: Wrapper) {
@@ -247,13 +289,12 @@ task testUnit(type: NpmTask) {
 
 
 
-
 task generateAvro(type: com.commercehub.gradle.plugin.avro.GenerateAvroJavaTask, dependsOn: ['makePretty']) {
     source("src/main/avro")
     outputDir = file("build/generated/java")
 }
 
-//task fixPluginAvro (type: Delete, dependsOn:'copyTask') {
+//task fixPluginAvro (type: Delete, dependsOn:'copyTask') {cfiklmrs
 //    delete 'dest'
 //}
 //
@@ -268,6 +309,15 @@ task makePretty(type: Delete) {
 }
 
 
+
 project.afterEvaluate {
     build.dependsOn generateAvro
+//    compileJava.dependsOn generateAvro
+}
+
+
+
+tasks.withType(JavaCompile) {
+//    options.annotationProcessorPath = configurations.apt
+//    options.compilerArgs = ['-Amapstruct.suppressGeneratorTimestamp=true', '-Amapstruct.defaultComponentModel=spring']
 }

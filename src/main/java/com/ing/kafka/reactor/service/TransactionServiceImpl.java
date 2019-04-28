@@ -2,7 +2,6 @@ package com.ing.kafka.reactor.service;
 
 import lombok.extern.slf4j.Slf4j;
 import mysqlcdc.test.RawTransaction.Envelope;
-import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,12 +20,12 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public void process(List<ConsumerRecord<String, Envelope>> records) {
+    public void process(List<Envelope> records) {
 
 
         log.info("=========================");
         log.info("in TransactionServiceImpl.process method");
-        log.info("records : " + records);
+        log.info("records.size() : " + records.size());
         log.info("=========================");
 
 

@@ -1,0 +1,106 @@
+{
+  "type": "record",
+  "name": "Envelope",
+  "namespace": "mysqlcdc.test.RawTransaction",
+  "fields": [
+    {
+      "name": "before",
+      "type": [
+        "null",
+        {
+          "type": "record",
+          "name": "Value",
+          "fields": [
+            {
+              "name": "id",
+              "type": "int"
+            },
+            {
+              "name": "name",
+              "type": [
+                "null",
+                "string"
+              ],
+              "default": null
+            }
+          ],
+          "connect.name": "mysqlcdc.test.RawTransaction.Value"
+        }
+      ],
+      "default": null
+    },
+    {
+      "name": "after",
+      "type": [
+        "null",
+        "Value"
+      ],
+      "default": null
+    },
+    {
+      "name": "source",
+      "type": {
+        "type": "record",
+        "name": "Source",
+        "namespace": "io.debezium.connector.mysql",
+        "fields": [
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "server_id",
+            "type": "long"
+          },
+          {
+            "name": "ts_sec",
+            "type": "long"
+          },
+          {
+            "name": "gtid",
+            "type": [
+              "null",
+              "string"
+            ],
+            "default": null
+          },
+          {
+            "name": "file",
+            "type": "string"
+          },
+          {
+            "name": "pos",
+            "type": "long"
+          },
+          {
+            "name": "row",
+            "type": "int"
+          },
+          {
+            "name": "snapshot",
+            "type": [
+              "null",
+              "boolean"
+            ],
+            "default": null
+          }
+        ],
+        "connect.name": "io.debezium.connector.mysql.Source"
+      }
+    },
+    {
+      "name": "op",
+      "type": "string"
+    },
+    {
+      "name": "ts_ms",
+      "type": [
+        "null",
+        "long"
+      ],
+      "default": null
+    }
+  ],
+  "connect.version": 1,
+  "connect.name": "mysqlcdc.test.RawTransaction.Envelope"
+}
